@@ -6,7 +6,7 @@ Collaborateur : Bonney Thomas, Duchemin Maxime, Michon Florian.
 Répartition des taĉhes :
 - Développement Interfaces joueur
 - Développement Interfaces Tournois
-- Développement Interfaces des stratégie
-- Développement Interfaces des célébration (optionnel)
+- Développement Interfaces stratégie
+- Développement Interfaces célébration (optionnel)
 - Création de la DTD
 - Développement du module de dessins stratégique
