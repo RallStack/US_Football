@@ -16,25 +16,27 @@ import java.util.ArrayList;
 
 public class Parser {
 
-    public void parseXML(Activity activity){
+    public XmlPullParser parseXML(Activity activity, String file){
         XmlPullParserFactory parserFactory;
         try {
             parserFactory = XmlPullParserFactory.newInstance();
             XmlPullParser parser = parserFactory.newPullParser();
-            InputStream is = activity.getAssets().open("player.xml");
+            InputStream is = activity.getAssets().open(file);
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(is, null);
 
-            processParsing(parser);
+            return parser;
 
         } catch(XmlPullParserException e){
 
         } catch(IOException e) {
 
         }
+
+        return null;
     }
 
-    private void processParsing(XmlPullParser parser) throws IOException, XmlPullParserException {
+    public ArrayList processParsingPlayer(XmlPullParser parser) throws IOException, XmlPullParserException {
         ArrayList<Players> players = new ArrayList<>();
         int eventType = parser.getEventType();
         Players currentPlayer = null;
@@ -48,9 +50,36 @@ public class Parser {
 
                     if ("player".equals(eltName)){
                         currentPlayer = new Players();
-                    } else if (){
-                        if ("name".equals(eltName)){
-                            currentPlayer.name = parser.nextText();
+                        players.add(currentPlayer);
+                    } else if (currentPlayer != null){
+                        switch (eltName) {
+                            case "name":
+                                currentPlayer.name = parser.nextText();
+                                break;
+                            case "surname":
+                                currentPlayer.surname = parser.nextText();
+                                break;
+                            case "birthdate":
+                                currentPlayer.birthdate = parser.nextText();
+                                break;
+                            case "url_picture":
+                                currentPlayer.url_picture = parser.nextText();
+                                break;
+                            case "height":
+                                currentPlayer.height = parser.nextText();
+                                break;
+                            case "weight":
+                                currentPlayer.weight = parser.nextText();
+                                break;
+                            case "post":
+                                currentPlayer.post = parser.nextText();
+                                break;
+                            case "tee_num":
+                                currentPlayer.tee_num = parser.nextText();
+                                break;
+                            case "state":
+                                currentPlayer.state = parser.nextText();
+                                break;
                         }
                     }
                     break;
@@ -59,14 +88,6 @@ public class Parser {
             eventType = parser.next();
         }
 
-        printPlayer(players);
-    }
-
-    private void printPlayer(ArrayList<Players> players) {
-        StringBuilder builder =  new StringBuilder();
-
-        for (Players player : players) {
-            builder.append(player.name).append("\n");
-        }
+        return players;
     }
 }
