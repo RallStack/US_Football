@@ -16,13 +16,6 @@ import java.util.List;
 public class JoueurActivity extends Activity{
 
     private ListView playerListView;
-    private String[] prenoms = new String[]{
-            "Antoine", "Benoit", "Cyril", "David", "Eloise", "Florent",
-            "Gerard", "Hugo", "Ingrid", "Jonathan", "Kevin", "Logan",
-            "Mathieu", "Noemie", "Olivia", "Philippe", "Quentin", "Romain",
-            "Sophie", "Tristan", "Ulric", "Vincent", "Willy", "Xavier",
-            "Yann", "Zoé"
-    };
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -41,6 +34,9 @@ public class JoueurActivity extends Activity{
         List<ElementList> tweets = new ArrayList<>();
         tweets.add(new ElementList(Color.BLACK, "Florent", "Mon premier tweet !"));
         tweets.add(new ElementList(Color.BLUE, "Kevin", "C'est ici que ça se passe !"));
+        tweets.add(new ElementList(Color.GREEN, "Logan", "Que c'est beau..."));
+        tweets.add(new ElementList(Color.RED, "Mathieu", "Il est quelle heure ??"));
+        tweets.add(new ElementList(Color.GRAY, "Willy", "On y est presque"));
         tweets.add(new ElementList(Color.GREEN, "Logan", "Que c'est beau..."));
         tweets.add(new ElementList(Color.RED, "Mathieu", "Il est quelle heure ??"));
         tweets.add(new ElementList(Color.GRAY, "Willy", "On y est presque"));
