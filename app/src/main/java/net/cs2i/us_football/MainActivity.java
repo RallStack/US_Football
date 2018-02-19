@@ -8,19 +8,65 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button b;
+    Button j;
+    Button e;
+    Button s;
+    Button c;
+    Button t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        b=(Button)this.findViewById(R.id.btn_goto_joueur);
-        b.setOnClickListener(this);
+
+        //Joueur
+        j=(Button)this.findViewById(R.id.btn_goto_joueur);
+        j.setOnClickListener(this);
+
+        //Equipe
+        e=(Button)this.findViewById(R.id.btn_goto_equipe);
+        e.setOnClickListener(this);
+
+        //Strategie
+        s=(Button)this.findViewById(R.id.btn_goto_strategie);
+        s.setOnClickListener(this);
+
+        //Celebration
+        c=(Button)this.findViewById(R.id.btn_goto_celebration);
+        c.setOnClickListener(this);
+
+        //Joueur
+        t=(Button)this.findViewById(R.id.btn_goto_tournoi);
+        t.setOnClickListener(this);
     }
 
     public void onClick(View v) {
-        Intent i = new Intent(this, JoueurActivity.class);
-        this.startActivity(i);
+        switch (v.getId()){
+            case R.id.btn_goto_joueur :
+                Intent bj = new Intent(this, JoueurActivity.class);
+                this.startActivity(bj);
+                break;
+
+            case R.id.btn_goto_equipe :
+                Intent be = new Intent(this, EquipeActivity.class);
+                this.startActivity(be);
+                break;
+
+            case  R.id.btn_goto_strategie :
+                Intent bs = new Intent(this, StrategieActivity.class);
+                this.startActivity(bs);
+                break;
+
+            case R.id.btn_goto_celebration :
+                Intent bc = new Intent(this, CelebrationActivity.class);
+                this.startActivity(bc);
+                break;
+
+            case R.id.btn_goto_tournoi :
+                Intent bt = new Intent(this, TournoiActivity.class);
+                this.startActivity(bt);
+                break;
+        }
     }
 }
