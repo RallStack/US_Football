@@ -30,7 +30,7 @@
         tools:layout_editor_absoluteY="455dp">
 
         <Button
-            android:id="@+id/btn_add_strat"
+            android:id="@+id/btn_add_strategie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ajouter une stratégie" />
