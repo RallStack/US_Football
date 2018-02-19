@@ -37,6 +37,9 @@ public class JoueurActivity extends Activity{
         tweets.add(new ElementList(Color.GREEN, "Logan", "Que c'est beau..."));
         tweets.add(new ElementList(Color.RED, "Mathieu", "Il est quelle heure ??"));
         tweets.add(new ElementList(Color.GRAY, "Willy", "On y est presque"));
+        tweets.add(new ElementList(Color.GREEN, "Logan", "Que c'est beau..."));
+        tweets.add(new ElementList(Color.RED, "Mathieu", "Il est quelle heure ??"));
+        tweets.add(new ElementList(Color.GRAY, "Willy", "On y est presque"));
         return tweets;
     }
 }

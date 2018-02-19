@@ -26,6 +26,8 @@
 
         <activity android:name=".StrategieActivity" />
 
+        <activity android:name=".AttaqueActivity" />
+
     </application>
 
 </manifest>
