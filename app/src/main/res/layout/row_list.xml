@@ -1,10 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:padding="10dp" >
 
-    <ImageView android:id="@+id/picture" android:layout_width="50dp" android:layout_height="50dp" tools:background="#AAA" />
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        tools:background="#AAA"
+    />
 
-    <TextView android:id="@+id/main_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:layout_marginLeft="10dp" android:layout_toRightOf="@+id/picture" android:layout_alignTop="@+id/picture" android:textStyle="bold" tools:text="Main text" />
+    <TextView
+        android:id="@+id/main_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/picture"
+        android:layout_alignTop="@+id/picture"
+        android:textStyle="bold"
+        tools:text="Main text"
+    />
 
-    <TextView android:id="@+id/text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:layout_alignLeft="@+id/main_text" android:layout_below="@+id/main_text" tools:text="Secondary text" />
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_alignLeft="@+id/main_text"
+        android:layout_below="@+id/main_text"
+        tools:text="Secondary text"
+    />
 
+    <Button
+        android:id="@+id/btn_goto_detail"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="Détail"
+    />
 </RelativeLayout>
