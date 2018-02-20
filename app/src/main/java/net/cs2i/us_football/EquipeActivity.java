@@ -30,7 +30,7 @@ public class EquipeActivity extends Activity {
     }
 
     private List<ElementList> genererList(){
-        List<ElementList> tweets = new ArrayList<>();
+        /*List<ElementList> tweets = new ArrayList<>();
         tweets.add(new ElementList(Color.BLACK, "New England Patriots", ""));
         tweets.add(new ElementList(Color.BLUE, "Buffalo Bills", ""));
         tweets.add(new ElementList(Color.GREEN, "Miami Dolphins", ""));
@@ -43,6 +43,7 @@ public class EquipeActivity extends Activity {
         tweets.add(new ElementList(Color.BLACK, "Los Angeles Chargers", ""));
         tweets.add(new ElementList(Color.GRAY, "Oakland Raiders", ""));
         tweets.add(new ElementList(Color.BLUE, "Denver Broncos", ""));
-        return tweets;
+        return tweets;*/
+        return null;
     }
 }
