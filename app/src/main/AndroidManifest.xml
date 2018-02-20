@@ -28,7 +28,15 @@
 
         <activity android:name=".AttaqueActivity" />
 
-        <activity android:name=".JoueurEditionActivity" />
+        <activity android:name=".DefenseActivity" />
+
+        <activity android:name=".SpecialActivity" />
+
+        <activity android:name=".NewStrategieAttaqueActivity" />
+
+        <activity android:name=".NewStrategieDefenseActivity" />
+
+        <activity android:name=".NewStrategieSpecialActivity" />
 
     </application>
 
