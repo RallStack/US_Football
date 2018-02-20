@@ -8,9 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -42,7 +40,7 @@ public class AttaqueActivity extends Activity implements View.OnClickListener{
     }
 
     public void onClick(View v) {
-        Intent bj = new Intent(this, NewStrategieActivity.class);
+        Intent bj = new Intent(this, NewStrategieAttaqueActivity.class);
         this.startActivity(bj);
     }
 

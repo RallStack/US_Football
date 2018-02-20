@@ -32,7 +32,11 @@
 
         <activity android:name=".SpecialActivity" />
 
-        <activity android:name=".NewStrategieActivity" />
+        <activity android:name=".NewStrategieAttaqueActivity" />
+
+        <activity android:name=".NewStrategieDefenseActivity" />
+
+        <activity android:name=".NewStrategieSpecialActivity" />
 
     </application>
 

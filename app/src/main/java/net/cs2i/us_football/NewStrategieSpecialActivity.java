@@ -7,17 +7,15 @@ package net.cs2i.us_football;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewStrategieActivity extends Activity{
+public class NewStrategieSpecialActivity extends Activity{
 
     private ListView playerStratListView;
 
@@ -37,7 +35,7 @@ public class NewStrategieActivity extends Activity{
 
         }
 
-        ListAdapter adapter = new ListAdapter(NewStrategieActivity.this, elementLists);
+        ListAdapter adapter = new ListAdapter(NewStrategieSpecialActivity.this, elementLists);
         playerStratListView.setAdapter(adapter);
     }
 
