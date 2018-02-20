@@ -32,6 +32,8 @@
 
         <activity android:name=".SpecialActivity" />
 
+        <activity android:name=".NewStrategieActivity" />
+
     </application>
 
 </manifest>
