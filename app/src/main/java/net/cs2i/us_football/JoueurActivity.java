@@ -9,7 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import java.util.ArrayList;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -31,10 +33,19 @@ public class JoueurActivity extends Activity implements View.OnClickListener{
         j.setOnClickListener(this);
 
         playerListView = (ListView) findViewById(R.id.player_list_view);
+        Players player = new Players();
 
-        List<ElementList> elementLists = genererList();
+        List<ElementList> elementLists = null;
 
-        ListAdapter adapter = new ListAdapter(JoueurActivity.this, elementLists);
+        try {
+            elementLists = player.genererList(this);
+        } catch (IOException e) {
+
+        } catch (XmlPullParserException e) {
+
+        }
+
+        ListAdapter adapter = new ListAdapter(this, elementLists);
         playerListView.setAdapter(adapter);
     }
 
@@ -48,19 +59,4 @@ public class JoueurActivity extends Activity implements View.OnClickListener{
         }
     }
 
-
-
-
-    private List<ElementList> genererList(){
-        List<ElementList> tweets = new ArrayList<>();
-        tweets.add(new ElementList(Color.BLACK, "Florent", "Mon premier tweet !"));
-        tweets.add(new ElementList(Color.BLUE, "Kevin", "C'est ici que ça se passe !"));
-        tweets.add(new ElementList(Color.GREEN, "Logan", "Que c'est beau..."));
-        tweets.add(new ElementList(Color.RED, "Mathieu", "Il est quelle heure ??"));
-        tweets.add(new ElementList(Color.GRAY, "Willy", "On y est presque"));
-        tweets.add(new ElementList(Color.GREEN, "Logan", "Que c'est beau..."));
-        tweets.add(new ElementList(Color.RED, "Mathieu", "Il est quelle heure ??"));
-        tweets.add(new ElementList(Color.GRAY, "Willy", "On y est presque"));
-        return tweets;
-    }
 }
