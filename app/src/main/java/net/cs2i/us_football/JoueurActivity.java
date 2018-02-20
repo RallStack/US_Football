@@ -49,7 +49,6 @@ public class JoueurActivity extends Activity implements View.OnClickListener{
         playerListView.setAdapter(adapter);
     }
 
-
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_ajouter_joueur:
