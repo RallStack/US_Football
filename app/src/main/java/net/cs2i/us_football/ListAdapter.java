@@ -44,7 +44,7 @@ public class ListAdapter extends ArrayAdapter<ElementList> {
         //il ne reste plus qu'à remplir notre vue
         viewHolder.main_text.setText(elementList.getMainText());
         viewHolder.text.setText(elementList.getText());
-        viewHolder.picture.setImageDrawable(new ColorDrawable(elementList.getColor()));
+        viewHolder.picture.setImageResource(R.drawable.none);
 
         return convertView;
     }

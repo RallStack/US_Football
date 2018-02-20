@@ -36,12 +36,13 @@ public class AttaqueActivity extends Activity {
     }
 
     private List<ElementList> genererList(){
-        List<ElementList> tweets = new ArrayList<>();
+        /*List<ElementList> tweets = new ArrayList<>();
         tweets.add(new ElementList(Color.BLACK, "Baguette", "Technique bien française"));
         tweets.add(new ElementList(Color.BLUE, "Flow Bomb", "Flow va loin et vite"));
         tweets.add(new ElementList(Color.GREEN, "Tank Max", "Max prend la balle et cours"));
         tweets.add(new ElementList(Color.RED, "Fourberie de Thomas", "Thomas sort une technique de fourbe"));
         tweets.add(new ElementList(Color.GRAY, "Texas Ranger", "Auto Win"));
-        return tweets;
+        return tweets;*/
+        return null;
     }
 }
