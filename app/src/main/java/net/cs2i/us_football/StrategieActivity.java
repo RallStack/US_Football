@@ -41,15 +41,15 @@ public class StrategieActivity extends Activity implements View.OnClickListener{
                 this.startActivity(ba);
                 break;
 
-            /**case R.id.btn_goto_defense:
-                Intent be = new Intent(this, EquipeActivity.class);
-                this.startActivity(be);
+            case R.id.btn_goto_defense:
+                Intent bd = new Intent(this, DefenseActivity.class);
+                this.startActivity(bd);
                 break;
 
             case R.id.btn_goto_special:
-                Intent bs = new Intent(this, StrategieActivity.class);
-                this.startActivity(bs);
-                break;*/
+                Intent bsp = new Intent(this, SpecialActivity.class);
+                this.startActivity(bsp);
+                break;
         }
     }
 }

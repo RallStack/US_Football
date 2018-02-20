@@ -28,6 +28,10 @@
 
         <activity android:name=".AttaqueActivity" />
 
+        <activity android:name=".DefenseActivity" />
+
+        <activity android:name=".SpecialActivity" />
+
     </application>
 
 </manifest>
