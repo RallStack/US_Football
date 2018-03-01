@@ -23,7 +23,7 @@ public class JoueurActivity extends Activity{
         setContentView(R.layout.activity_joueurs);
 
         playerListView = (ListView) findViewById(R.id.player_list_view);
-        Players player = new Players();
+        Player player = new Player();
 
         List<ElementList> elementLists = null;
 
@@ -38,6 +38,6 @@ public class JoueurActivity extends Activity{
         ListAdapter adapter = new ListAdapter(this, elementLists);
         playerListView.setAdapter(adapter);
 
-        //player.CreateXml(this, "test.xml");
+        player.addPlayerToXml(this);
     }
 }

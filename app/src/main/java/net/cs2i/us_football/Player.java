@@ -8,9 +8,9 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlSerializer;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,17 +18,24 @@ import java.util.List;
  * Created by mduchemin on 19/02/18.
  */
 
-public class Players{
+public class Player {
 
     private String name, surname, birthdate, url_picture, height, weight, post, tee_num, state;
 
+    /**
+     * Get players list from XML file
+     * @param activity
+     * @return ArrayList<Player>
+     * @throws IOException
+     * @throws XmlPullParserException
+     */
     private ArrayList getPLayers(Activity activity) throws IOException, XmlPullParserException {
-        Parser parser = new Parser();
-        XmlPullParser pullParser = parser.parseXML(activity, "players.xml");
+        XmlHandler xmlHandler = new XmlHandler();
+        XmlPullParser pullParser = xmlHandler.readXML(activity, "players.xml");
 
-        ArrayList<Players> players = new ArrayList<>();
+        ArrayList<Player> players = new ArrayList<>();
         int eventType = pullParser.getEventType();
-        Players currentPlayer = null;
+        Player currentPlayer = null;
 
         while (eventType != XmlPullParser.END_DOCUMENT){
             String eltName = null;
@@ -38,7 +45,7 @@ public class Players{
                     eltName = pullParser.getName();
 
                     if ("player".equals(eltName)){
-                        currentPlayer = new Players();
+                        currentPlayer = new Player();
                         players.add(currentPlayer);
                     } else if (currentPlayer != null){
                         switch (eltName) {
@@ -80,32 +87,26 @@ public class Players{
         return players;
     }
 
-    private void CreateXml(Activity activity, String file){
+    public void addPlayerToXml(Activity activity){
 
-        FileOutputStream fos = null;
+        XmlSerializer serializer = Xml.newSerializer();
+        StringWriter writer = new StringWriter();
+
+        FileOutputStream fos;
+
         try {
-            fos = activity.openFileOutput(file, Context.MODE_APPEND);
+            serializer.setOutput(writer);
+            serializer.startDocument("UTF-8", true);
+            serializer.startTag("", "players");
 
-            XmlSerializer serializer = Xml.newSerializer();
-
-            serializer.setOutput(fos, "UTF-8");
-            serializer.startDocument(null, Boolean.valueOf(true));
-            serializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
-
-            serializer.startTag(null, "root");
-
-            for(int j = 0 ; j < 3 ; j++)
-            {
-                serializer.startTag(null, "record");
-                serializer.text("test");
-                serializer.endTag(null, "record");
-            }
+            serializer.endTag("", "players");
             serializer.endDocument();
 
-            serializer.flush();
+            String result = writer.toString();
 
+            fos = activity.openFileOutput("test.xml", Context.MODE_PRIVATE);
+            fos.write(result.getBytes());
             fos.close();
-        } catch (FileNotFoundException e) {
 
         } catch (IOException e) {
 
@@ -113,7 +114,7 @@ public class Players{
     }
 
     public List<ElementList> genererList(Activity activity) throws IOException, XmlPullParserException {
-        ArrayList<Players> players = null;
+        ArrayList<Player> players = null;
         try{
             players = this.getPLayers(activity);
         } catch (IOException e){
@@ -122,7 +123,7 @@ public class Players{
 
         List<ElementList> elementLists = new ArrayList<>();
 
-        for (Players player : players){
+        for (Player player : players){
             elementLists.add(new ElementList(player.url_picture, player.surname + " " + player.name, player.post));
         }
 
