@@ -22,6 +22,8 @@
 
         <activity android:name=".JoueurActivity" />
 
+        <activity android:name=".JoueurEditionActivity" />
+
         <activity android:name=".EquipeActivity" />
 
         <activity android:name=".StrategieActivity" />

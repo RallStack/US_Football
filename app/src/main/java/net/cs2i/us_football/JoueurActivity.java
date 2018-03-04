@@ -26,25 +26,36 @@ public class JoueurActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joueurs);
 
-        //Joueur
         j=(Button)this.findViewById(R.id.btn_ajouter_joueur);
         j.setOnClickListener(this);
 
         playerListView = (ListView) findViewById(R.id.player_list_view);
         Player player = new Player();
 
+        String data =
+                "    <player>\n" +
+                "        <name>New</name>\n" +
+                "        <surname>Player</surname>\n" +
+                "        <birthdate>01/01/1997</birthdate>\n" +
+                "        <url_picture></url_picture>\n" +
+                "        <height>180</height>\n" +
+                "        <weight>70</weight>\n" +
+                "        <post>B</post>\n" +
+                "        <tee_num>15</tee_num>\n" +
+                "        <state>A</state>\n" +
+                "    </player>\n";
+
+        player.addPlayerToXml(this, data);
+
         List<ElementList> elementLists = null;
 
         try {
             elementLists = player.genererList(this);
-        } catch (IOException e) {
-
-        } catch (XmlPullParserException e) {
-
+            ListAdapter adapter = new ListAdapter(this, elementLists);
+            playerListView.setAdapter(adapter);
         }
-
-        ListAdapter adapter = new ListAdapter(this, elementLists);
-        playerListView.setAdapter(adapter);
+        catch (XmlPullParserException e) { }
+        catch (IOException e) { }
     }
 
     public void onClick(View v) {

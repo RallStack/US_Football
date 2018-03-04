@@ -2,15 +2,11 @@ package net.cs2i.us_football;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Xml;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlSerializer;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +25,7 @@ public class Player {
      * @throws IOException
      * @throws XmlPullParserException
      */
+
     private ArrayList getPLayers(Activity activity) throws IOException, XmlPullParserException {
         XmlHandler xmlHandler = new XmlHandler();
         XmlPullParser pullParser = xmlHandler.readXML(activity, "players.xml");
@@ -87,30 +84,9 @@ public class Player {
         return players;
     }
 
-    public void addPlayerToXml(Activity activity){
-
-        XmlSerializer serializer = Xml.newSerializer();
-        StringWriter writer = new StringWriter();
-
-        FileOutputStream fos;
-
-        try {
-            serializer.setOutput(writer);
-            serializer.startDocument("UTF-8", true);
-            serializer.startTag("", "players");
-
-            serializer.endTag("", "players");
-            serializer.endDocument();
-
-            String result = writer.toString();
-
-            fos = activity.openFileOutput("test.xml", Context.MODE_PRIVATE);
-            fos.write(result.getBytes());
-            fos.close();
-
-        } catch (IOException e) {
-
-        }
+    public void addPlayerToXml(Context context, String data){
+        XmlHandler xmlHandler = new XmlHandler();
+        xmlHandler.writeXML(context, data, "players.xml");
     }
 
     public List<ElementList> genererList(Activity activity) throws IOException, XmlPullParserException {
