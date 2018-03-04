@@ -1,6 +1,5 @@
 package net.cs2i.us_football;
 
-import android.app.Activity;
 import android.content.Context;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -16,19 +15,20 @@ import java.util.List;
 
 public class Player {
 
+    private static final String filename = "players.xml";
     private String name, surname, birthdate, url_picture, height, weight, post, tee_num, state;
+    XmlHandler xmlHandler;
 
-    /**
-     * Get players list from XML file
-     * @param activity
-     * @return ArrayList<Player>
-     * @throws IOException
-     * @throws XmlPullParserException
-     */
+    public Player(){
+        xmlHandler = new XmlHandler();
+    }
 
-    private ArrayList getPLayers(Activity activity) throws IOException, XmlPullParserException {
-        XmlHandler xmlHandler = new XmlHandler();
-        XmlPullParser pullParser = xmlHandler.readXML(activity, "players.xml");
+    public void createPlayerFile(Context context){
+        xmlHandler.CreateXmlFile(context, filename);
+    }
+
+    private ArrayList getPLayers(Context context) throws IOException, XmlPullParserException {
+        XmlPullParser pullParser = xmlHandler.readXML(context, filename);
 
         ArrayList<Player> players = new ArrayList<>();
         int eventType = pullParser.getEventType();
@@ -85,14 +85,13 @@ public class Player {
     }
 
     public void addPlayerToXml(Context context, String data){
-        XmlHandler xmlHandler = new XmlHandler();
-        xmlHandler.writeXML(context, data, "players.xml");
+        xmlHandler.writeXML(context, data, filename);
     }
 
-    public List<ElementList> genererList(Activity activity) throws IOException, XmlPullParserException {
+    public List<ElementList> generateList(Context context) throws IOException, XmlPullParserException {
         ArrayList<Player> players = null;
         try{
-            players = this.getPLayers(activity);
+            players = this.getPLayers(context);
         } catch (IOException e){
 
         }

@@ -18,6 +18,34 @@ import java.io.IOException;
  */
 
 public class XmlHandler {
+    /**
+     * Create an xml 'filename' if it doesn't exist.
+     *
+     * @param context
+     * @param filename
+     */
+    public void CreateXmlFile(Context context, String filename){
+        FileOutputStream os = null;
+        File file = new File(filename);
+
+        if (!this.fileExists(context, filename)) {
+            String xmlSkeleton =
+                    "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
+                    "<"+ filename.replace(".xml", "") +">\n" +
+                    "</"+ filename.replace(".xml", "") +">";
+
+            try {
+                file.createNewFile();
+
+                os = context.openFileOutput(filename, context.MODE_PRIVATE);
+                os.write(xmlSkeleton.getBytes());
+                os.close();
+            }
+            catch (FileNotFoundException e) { }
+            catch (IOException e) { }
+
+        }
+    }
 
     /**
      * Read an xml 'filename'.
@@ -50,28 +78,8 @@ public class XmlHandler {
      * @param filename
      */
     public void writeXML(Context context, String data, String filename){
-
         FileInputStream is = null;
         FileOutputStream os = null;
-        File file = new File(filename);
-
-        if (!this.fileExists(context, filename)) {
-            String xmlSkeleton =
-                    "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
-                    "<"+ filename.replace(".xml", "") +">\n" +
-                    "</"+ filename.replace(".xml", "") +">";
-
-            try {
-                file.createNewFile();
-
-                os = context.openFileOutput(filename, context.MODE_PRIVATE);
-                os.write(xmlSkeleton.getBytes());
-                os = null;
-            }
-            catch (FileNotFoundException e) { }
-            catch (IOException e) { }
-
-        }
 
         try {
             is = context.openFileInput(filename);

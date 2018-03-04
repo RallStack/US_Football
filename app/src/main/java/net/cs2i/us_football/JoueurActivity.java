@@ -20,6 +20,7 @@ public class JoueurActivity extends Activity implements View.OnClickListener{
 
     Button j;
     private ListView playerListView;
+    private Player player;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -30,8 +31,9 @@ public class JoueurActivity extends Activity implements View.OnClickListener{
         j.setOnClickListener(this);
 
         playerListView = (ListView) findViewById(R.id.player_list_view);
-        Player player = new Player();
+        player = new Player();
 
+        player.createPlayerFile(this);
         String data =
                 "    <player>\n" +
                 "        <name>New</name>\n" +
@@ -44,18 +46,9 @@ public class JoueurActivity extends Activity implements View.OnClickListener{
                 "        <tee_num>15</tee_num>\n" +
                 "        <state>A</state>\n" +
                 "    </player>\n";
-
         player.addPlayerToXml(this, data);
 
-        List<ElementList> elementLists = null;
-
-        try {
-            elementLists = player.genererList(this);
-            ListAdapter adapter = new ListAdapter(this, elementLists);
-            playerListView.setAdapter(adapter);
-        }
-        catch (XmlPullParserException e) { }
-        catch (IOException e) { }
+        diplayPlayer();
     }
 
     public void onClick(View v) {
@@ -65,5 +58,17 @@ public class JoueurActivity extends Activity implements View.OnClickListener{
                 this.startActivity(bj);
                 break;
         }
+    }
+
+    private void diplayPlayer(){
+        List<ElementList> elementLists = null;
+
+        try {
+            elementLists = player.generateList(this);
+            ListAdapter adapter = new ListAdapter(this, elementLists);
+            playerListView.setAdapter(adapter);
+        }
+        catch (XmlPullParserException e) { }
+        catch (IOException e) { }
     }
 }
