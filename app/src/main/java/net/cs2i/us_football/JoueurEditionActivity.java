@@ -2,24 +2,29 @@ package net.cs2i.us_football;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Hashtable;
 import java.util.Locale;
 
 /**
  * Created by thomas on 20/02/2018.
  */
 
-public class JoueurEditionActivity extends Activity {
+public class JoueurEditionActivity extends Activity implements View.OnClickListener{
 
-    Calendar myCalendar = Calendar.getInstance();
-    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+    private EditText firstname, lastname, birthday, height, weight, post, teeNumber, state;
+    private Button btnAdd;
 
+    private Calendar myCalendar = Calendar.getInstance();
+    private DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
             myCalendar.set(Calendar.YEAR, year);
@@ -30,18 +35,17 @@ public class JoueurEditionActivity extends Activity {
 
     };
 
-    EditText edittext;
-
-
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joueur_edition);
 
-        edittext = (EditText)this.findViewById(R.id.add_player_birthdate);
+        initializeInput();
 
-        edittext.setOnClickListener(new View.OnClickListener() {
+        btnAdd=(Button)this.findViewById(R.id.btn_add);
+        btnAdd.setOnClickListener(this);
 
+        birthday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new DatePickerDialog(JoueurEditionActivity.this,  date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
@@ -49,11 +53,44 @@ public class JoueurEditionActivity extends Activity {
         });
     }
 
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_add:
+                submitForm();
+                break;
+        }
+    }
 
     private void updateLabel() {
         String myFormat = "dd/MM/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.FRANCE);
 
-        edittext.setText(sdf.format(myCalendar.getTime()));
+        birthday.setText(sdf.format(myCalendar.getTime()));
+    }
+
+    public void submitForm(){
+        Hashtable dataTable = new Hashtable();
+        dataTable.put("firstname", firstname.getText().toString());
+        dataTable.put("lastname", lastname.getText().toString());
+        dataTable.put("birthday", birthday.getText().toString());
+        dataTable.put("height", height.getText().toString());
+        dataTable.put("weight", weight.getText().toString());
+        dataTable.put("post", post.getText().toString());
+        dataTable.put("teeNumber", teeNumber.getText().toString());
+        dataTable.put("state", state.getText().toString());
+
+        Player player = new Player();
+        player.addPlayerToXml(JoueurEditionActivity.this, dataTable);
+    }
+
+    public void initializeInput(){
+        firstname = (EditText)this.findViewById(R.id.add_player_firstname);
+        lastname = (EditText)this.findViewById(R.id.add_player_lastname);
+        birthday = (EditText)this.findViewById(R.id.add_player_birthdate);
+        height = (EditText)this.findViewById(R.id.add_player_height);
+        weight = (EditText)this.findViewById(R.id.add_player_weight);
+        post = (EditText)this.findViewById(R.id.add_player_post);
+        teeNumber = (EditText)this.findViewById(R.id.add_player_tee);
+        state = (EditText)this.findViewById(R.id.add_player_state);
     }
 }

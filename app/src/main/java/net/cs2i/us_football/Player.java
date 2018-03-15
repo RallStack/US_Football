@@ -7,6 +7,7 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 /**
@@ -46,10 +47,10 @@ public class Player {
                         players.add(currentPlayer);
                     } else if (currentPlayer != null){
                         switch (eltName) {
-                            case "name":
+                            case "firstname":
                                 currentPlayer.name = pullParser.nextText();
                                 break;
-                            case "surname":
+                            case "lastname":
                                 currentPlayer.surname = pullParser.nextText();
                                 break;
                             case "birthdate":
@@ -84,7 +85,21 @@ public class Player {
         return players;
     }
 
-    public void addPlayerToXml(Context context, String data){
+    public void addPlayerToXml(Context context, Hashtable dataTable){
+        String data =
+                "<player>" +
+                "<firstname>"+ dataTable.get("firstname") +"</firstname>" +
+                "<lastname>"+ dataTable.get("lastname") +"</lastname>" +
+                "<birthdate>"+ dataTable.get("birthday") +"</birthdate>" +
+                "<url_picture></url_picture>" +
+                "<height>"+ dataTable.get("height") +"</height>" +
+                "<weight>"+ dataTable.get("weight") +"</weight>" +
+                "<post>"+ dataTable.get("post") +"</post>" +
+                "<tee_num>"+ dataTable.get("teeNumber") +"</tee_num>" +
+                "<state"+ dataTable.get("state") +"</state>" +
+                "</player>";
+
+
         xmlHandler.writeXML(context, data, filename);
     }
 

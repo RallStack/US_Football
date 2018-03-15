@@ -34,19 +34,6 @@ public class JoueurActivity extends Activity implements View.OnClickListener{
         player = new Player();
 
         player.createPlayerFile(this);
-        String data =
-                "    <player>\n" +
-                "        <name>New</name>\n" +
-                "        <surname>Player</surname>\n" +
-                "        <birthdate>01/01/1997</birthdate>\n" +
-                "        <url_picture></url_picture>\n" +
-                "        <height>180</height>\n" +
-                "        <weight>70</weight>\n" +
-                "        <post>B</post>\n" +
-                "        <tee_num>15</tee_num>\n" +
-                "        <state>A</state>\n" +
-                "    </player>\n";
-        player.addPlayerToXml(this, data);
 
         diplayPlayer();
     }
