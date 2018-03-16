@@ -47,10 +47,10 @@ public class DefenseActivity extends Activity implements View.OnClickListener{
 
     private List<ElementList> genererList(){
         List<ElementList> tweets = new ArrayList<>();
-        tweets.add(new ElementList(Color.BLACK, "Mur", "Explicite"));
-        tweets.add(new ElementList(Color.BLUE, "Dome", "Aussi explicite"));
-        tweets.add(new ElementList(Color.GREEN, "Tank Max", "Max prend la balle et cours"));
-        tweets.add(new ElementList(Color.GRAY, "Texas Ranger", "Auto Win"));
+        //tweets.add(new ElementList(Color.BLACK, "Mur", "Explicite"));
+        //tweets.add(new ElementList(Color.BLUE, "Dome", "Aussi explicite"));
+        //tweets.add(new ElementList(Color.GREEN, "Tank Max", "Max prend la balle et cours"));
+        //tweets.add(new ElementList(Color.GRAY, "Texas Ranger", "Auto Win"));
         return tweets;
     }
 }
