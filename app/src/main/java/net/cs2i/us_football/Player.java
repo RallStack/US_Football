@@ -96,7 +96,7 @@ public class Player {
                 "<weight>"+ dataTable.get("weight") +"</weight>" +
                 "<post>"+ dataTable.get("post") +"</post>" +
                 "<tee_num>"+ dataTable.get("teeNumber") +"</tee_num>" +
-                "<state"+ dataTable.get("state") +"</state>" +
+                "<state>"+ dataTable.get("state") +"</state>" +
                 "</player>";
 
 
