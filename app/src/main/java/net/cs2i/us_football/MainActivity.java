@@ -3,16 +3,13 @@ package net.cs2i.us_football;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button j;
-    Button e;
-    Button s;
-    Button c;
-    Button t;
+    CardView j, e, s, c, t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,23 +18,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         //Joueur
-        j=(Button)this.findViewById(R.id.btn_goto_joueur);
+        j=(CardView)this.findViewById(R.id.btn_goto_joueur);
         j.setOnClickListener(this);
 
         //Equipe
-        e=(Button)this.findViewById(R.id.btn_goto_equipe);
+        e=(CardView)this.findViewById(R.id.btn_goto_equipe);
         e.setOnClickListener(this);
 
         //Strategie
-        s=(Button)this.findViewById(R.id.btn_goto_strategie);
+        s=(CardView)this.findViewById(R.id.btn_goto_strategie);
         s.setOnClickListener(this);
 
         //Celebration
-        c=(Button)this.findViewById(R.id.btn_goto_celebration);
+        c=(CardView)this.findViewById(R.id.btn_goto_celebration);
         c.setOnClickListener(this);
 
         //Joueur
-        t=(Button)this.findViewById(R.id.btn_goto_tournoi);
+        t=(CardView)this.findViewById(R.id.btn_goto_tournoi);
         t.setOnClickListener(this);
     }
 
