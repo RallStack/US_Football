@@ -8,9 +8,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +37,10 @@ public class AttaqueActivity extends Activity implements View.OnClickListener{
 
         attaqueListView = (ListView) findViewById(R.id.attaque_list_view);
 
-        List<ElementList> elementLists = genererList();
+        //List<ElementList> elementLists = genererList();
 
-        ListAdapter adapter = new ListAdapter(AttaqueActivity.this, elementLists);
-        attaqueListView.setAdapter(adapter);
+        //ListAdapter adapter = new ListAdapter(AttaqueActivity.this, elementLists);
+        //attaqueListView.setAdapter(adapter);
     }
 
     public void onClick(View v) {
@@ -44,7 +48,7 @@ public class AttaqueActivity extends Activity implements View.OnClickListener{
         this.startActivity(bj);
     }
 
-    private List<ElementList> genererList(){
+    //private List<ElementList> genererList(){
         /*List<ElementList> tweets = new ArrayList<>();
         tweets.add(new ElementList(Color.BLACK, "Baguette", "Technique bien française"));
         tweets.add(new ElementList(Color.BLUE, "Flow Bomb", "Flow va loin et vite"));
@@ -52,6 +56,6 @@ public class AttaqueActivity extends Activity implements View.OnClickListener{
         tweets.add(new ElementList(Color.RED, "Fourberie de Thomas", "Thomas sort une technique de fourbe"));
         tweets.add(new ElementList(Color.GRAY, "Texas Ranger", "Auto Win"));
         return tweets;*/
-        return null;
-    }
+        //return null;
+    //}
 }
