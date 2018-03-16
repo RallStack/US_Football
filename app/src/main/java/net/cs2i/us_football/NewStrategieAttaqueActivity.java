@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.widget.ListView;
 
-import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
@@ -19,7 +18,6 @@ import java.util.List;
 public class NewStrategieAttaqueActivity extends Activity{
 
     private ListView playerStratListView;
-    private Player player;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -27,22 +25,39 @@ public class NewStrategieAttaqueActivity extends Activity{
         setContentView(R.layout.activity_creation_strategies);
 
         playerStratListView = (ListView) findViewById(R.id.player_strat_list_view);
-        player = new Player();
 
-        player.createPlayerFile(this);
-
-        diplayPlayer();
-    }
-
-    private void diplayPlayer(){
         List<ElementList> elementLists = null;
+        /*try {
+            //elementLists = genererList();
+        } catch (IOException e) {
 
-        try {
-            elementLists = player.generateList(this);
-            ListAdapter adapter = new ListAdapter(this, elementLists);
-            playerStratListView.setAdapter(adapter);
-        }
-        catch (XmlPullParserException e) { }
-        catch (IOException e) { }
+        } catch (XmlPullParserException e) {
+
+        }*/
+
+        ListAdapter adapter = new ListAdapter(NewStrategieAttaqueActivity.this, elementLists);
+        playerStratListView.setAdapter(adapter);
     }
+/*
+    private List<ElementList> genererList() throws IOException, XmlPullParserException {
+        XmlHandler parser = new XmlHandler();
+
+        ArrayList<Players> players = parser.processParsingPlayer(parser.parseXML(this, "positions.xml"));
+
+        List<ElementList> elementLists = new ArrayList<>();
+
+        for (Players player : players){
+            elementLists.add(new ElementList(Color.BLACK, player.surname + " " + player.name, player.post));
+        }
+
+//        elementLists.add(new ElementList(Color.BLUE, "Kevin", "C'est ici que ça se passe !"));
+//        elementLists.add(new ElementList(Color.GREEN, "Logan", "Que c'est beau..."));
+//        elementLists.add(new ElementList(Color.RED, "Mathieu", "Il est quelle heure ??"));
+//        elementLists.add(new ElementList(Color.GRAY, "Willy", "On y est presque"));
+//        elementLists.add(new ElementList(Color.GREEN, "Logan", "Que c'est beau..."));
+//        elementLists.add(new ElementList(Color.RED, "Mathieu", "Il est quelle heure ??"));
+//        elementLists.add(new ElementList(Color.GRAY, "Willy", "On y est presque"));
+
+        return elementLists;
+    }*/
 }

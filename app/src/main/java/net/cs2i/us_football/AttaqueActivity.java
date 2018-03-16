@@ -32,8 +32,8 @@ public class AttaqueActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_attaques);
 
         //Attaque
-        a=(Button)this.findViewById(R.id.btn_add_attaque);
-        a.setOnClickListener(this);
+        //a=(Button)this.findViewById(R.id.btn_add_attaque);
+        //a.setOnClickListener(this);
 
         attaqueListView = (ListView) findViewById(R.id.attaque_list_view);
 
