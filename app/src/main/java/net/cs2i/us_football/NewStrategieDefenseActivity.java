@@ -40,15 +40,15 @@ public class NewStrategieDefenseActivity extends Activity{
     }
 
     private List<ElementList> genererList() throws IOException, XmlPullParserException {
-        Parser parser = new Parser();
+//        Parser parser = new Parser();
 
-        ArrayList<Players> players = parser.processParsingPlayer(parser.parseXML(this, "players.xml"));
+        //ArrayList<Players> players = parser.processParsingPlayer(parser.parseXML(this, "players.xml"));
 
         List<ElementList> elementLists = new ArrayList<>();
 
-        for (Players player : players){
-            elementLists.add(new ElementList(Color.BLACK, player.surname + " " + player.name, player.post));
-        }
+        //for (Players player : players){
+        //    elementLists.add(new ElementList(Color.BLACK, player.surname + " " + player.name, player.post));
+        //}
 
 //        elementLists.add(new ElementList(Color.BLUE, "Kevin", "C'est ici que ça se passe !"));
 //        elementLists.add(new ElementList(Color.GREEN, "Logan", "Que c'est beau..."));

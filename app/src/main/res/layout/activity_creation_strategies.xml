@@ -2,9 +2,12 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/view_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#066225">
+
+    android:background="#066225"
+    tools:ignore="InvalidId">
 
     <EditText
         android:id="@+id/nom_strategie"
@@ -17,6 +20,7 @@
         app:layout_constraintStart_toEndOf="@+id/relativeLayout"
         tools:layout_editor_absoluteY="0dp" />
 
+
     <Button
         android:id="@+id/btn_add_new_strat"
         android:layout_width="0dp"
@@ -26,6 +30,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/relativeLayout" />
+
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -45,5 +50,16 @@
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="135dp" />
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/none"
+        tools:layout_editor_absoluteX="190dp"
+        tools:layout_editor_absoluteY="139dp"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>

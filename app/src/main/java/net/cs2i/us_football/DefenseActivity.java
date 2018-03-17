@@ -34,10 +34,10 @@ public class DefenseActivity extends Activity implements View.OnClickListener{
 
         defenseListView = (ListView) findViewById(R.id.defense_list_view);
 
-        List<ElementList> elementLists = genererList();
+     //   List<ElementList> elementLists = genererList();
 
-        ListAdapter adapter = new ListAdapter(DefenseActivity.this, elementLists);
-        defenseListView.setAdapter(adapter);
+       // ListAdapter adapter = new ListAdapter(DefenseActivity.this, elementLists);
+        //defenseListView.setAdapter(adapter);
     }
 
     public void onClick(View v) {
@@ -45,12 +45,12 @@ public class DefenseActivity extends Activity implements View.OnClickListener{
         this.startActivity(bd);
     }
 
-    private List<ElementList> genererList(){
-        List<ElementList> tweets = new ArrayList<>();
-        tweets.add(new ElementList(Color.BLACK, "Mur", "Explicite"));
-        tweets.add(new ElementList(Color.BLUE, "Dome", "Aussi explicite"));
-        tweets.add(new ElementList(Color.GREEN, "Tank Max", "Max prend la balle et cours"));
-        tweets.add(new ElementList(Color.GRAY, "Texas Ranger", "Auto Win"));
-        return tweets;
-    }
+    //private List<ElementList> genererList(){
+    //    List<ElementList> tweets = new ArrayList<>();
+    //    tweets.add(new ElementList(Color.BLACK, "Mur", "Explicite"));
+    //    tweets.add(new ElementList(Color.BLUE, "Dome", "Aussi explicite"));
+    //    tweets.add(new ElementList(Color.GREEN, "Tank Max", "Max prend la balle et cours"));
+    //    tweets.add(new ElementList(Color.GRAY, "Texas Ranger", "Auto Win"));
+     //   return tweets;
+    //}
 }
