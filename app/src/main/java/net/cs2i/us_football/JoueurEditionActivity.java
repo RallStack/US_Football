@@ -57,6 +57,8 @@ public class JoueurEditionActivity extends Activity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.btn_add:
                 submitForm();
+                Intent bj = new Intent(this, JoueurActivity.class);
+                this.startActivity(bj);
                 break;
         }
     }
