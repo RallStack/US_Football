@@ -5,9 +5,12 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,7 +23,8 @@ import java.util.Locale;
 
 public class JoueurEditionActivity extends Activity implements View.OnClickListener{
 
-    private EditText firstname, lastname, birthday, height, weight, post, teeNumber, state;
+    private EditText firstname, lastname, birthday, height, weight, teeNumber, state;
+    Spinner post;
     private Button btnAdd;
 
     private Calendar myCalendar = Calendar.getInstance();
@@ -77,7 +81,7 @@ public class JoueurEditionActivity extends Activity implements View.OnClickListe
         dataTable.put("birthday", birthday.getText().toString());
         dataTable.put("height", height.getText().toString());
         dataTable.put("weight", weight.getText().toString());
-        dataTable.put("post", post.getText().toString());
+        dataTable.put("post", post.getSelectedItem().toString());
         dataTable.put("teeNumber", teeNumber.getText().toString());
         dataTable.put("state", state.getText().toString());
 
@@ -91,7 +95,7 @@ public class JoueurEditionActivity extends Activity implements View.OnClickListe
         birthday = (EditText)this.findViewById(R.id.add_player_birthdate);
         height = (EditText)this.findViewById(R.id.add_player_height);
         weight = (EditText)this.findViewById(R.id.add_player_weight);
-        post = (EditText)this.findViewById(R.id.add_player_post);
+        post = (Spinner) findViewById(R.id.add_player_post);
         teeNumber = (EditText)this.findViewById(R.id.add_player_tee);
         state = (EditText)this.findViewById(R.id.add_player_state);
     }

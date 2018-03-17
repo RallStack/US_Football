@@ -5,16 +5,16 @@ package net.cs2i.us_football;
  */
 
 import android.app.Activity;
-import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-
-import android.graphics.Bitmap;
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +32,8 @@ public class AttaqueActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_attaques);
 
         //Attaque
-        a=(Button)this.findViewById(R.id.btn_add_attaque);
-        a.setOnClickListener(this);
+        //a=(Button)this.findViewById(R.id.btn_add_attaque);
+        //a.setOnClickListener(this);
 
         attaqueListView = (ListView) findViewById(R.id.attaque_list_view);
 
@@ -58,9 +58,4 @@ public class AttaqueActivity extends Activity implements View.OnClickListener{
         return tweets;*/
         //return null;
     //}
-
-
-
-
-
 }

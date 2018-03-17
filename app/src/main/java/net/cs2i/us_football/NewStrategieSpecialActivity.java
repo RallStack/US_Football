@@ -27,28 +27,28 @@ public class NewStrategieSpecialActivity extends Activity{
         playerStratListView = (ListView) findViewById(R.id.player_strat_list_view);
 
         List<ElementList> elementLists = null;
-        try {
+        /*try {
             elementLists = genererList();
         } catch (IOException e) {
 
         } catch (XmlPullParserException e) {
 
-        }
+        }*/
 
         ListAdapter adapter = new ListAdapter(NewStrategieSpecialActivity.this, elementLists);
         playerStratListView.setAdapter(adapter);
     }
 
-    private List<ElementList> genererList() throws IOException, XmlPullParserException {
- //       Parser parser = new Parser();
+    /*private List<ElementList> genererList() throws IOException, XmlPullParserException {
+        XmlHandler parser = new XmlHandler();
 
-        //ArrayList<Players> players = parser.processParsingPlayer(parser.parseXML(this, "players.xml"));
+        ArrayList<Players> players = parser.processParsingPlayer(parser.parseXML(this, "positions.xml"));
 
         List<ElementList> elementLists = new ArrayList<>();
 
-        //for (Players player : players){
-        //    elementLists.add(new ElementList(Color.BLACK, player.surname + " " + player.name, player.post));
-        //}
+        for (Players player : players){
+            elementLists.add(new ElementList(Color.BLACK, player.surname + " " + player.name, player.post));
+        }
 
 //        elementLists.add(new ElementList(Color.BLUE, "Kevin", "C'est ici que ça se passe !"));
 //        elementLists.add(new ElementList(Color.GREEN, "Logan", "Que c'est beau..."));
@@ -59,5 +59,5 @@ public class NewStrategieSpecialActivity extends Activity{
 //        elementLists.add(new ElementList(Color.GRAY, "Willy", "On y est presque"));
 
         return elementLists;
-    }
+    }*/
 }

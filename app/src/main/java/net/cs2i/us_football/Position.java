@@ -7,31 +7,25 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 
 /**
- * Created by mduchemin on 19/02/18.
+ * Created by mduchemin on 16/03/18.
  */
 
-public class Player {
-
+public class Position {
     private static final String filename = "positions.xml";
-    private String name, surname, birthdate, url_picture, height, weight, post, tee_num, state;
+    private String id, name, shortcut;
     XmlHandler xmlHandler;
-
-    public Player(){
+/*
+    public Position(){
         xmlHandler = new XmlHandler();
     }
 
-    public void createPlayerFile(Context context){
-        xmlHandler.CreateXmlFile(context, filename);
-    }
-
-    private ArrayList getPLayers(Context context) throws IOException, XmlPullParserException {
+    private ArrayList getPosition(Context context) throws IOException, XmlPullParserException {
         XmlPullParser pullParser = xmlHandler.readXML(context, filename);
 
-        ArrayList<Player> players = new ArrayList<>();
+        ArrayList<Position> positions = new ArrayList<>();
         int eventType = pullParser.getEventType();
         Player currentPlayer = null;
 
@@ -85,24 +79,6 @@ public class Player {
         return players;
     }
 
-    public void addPlayerToXml(Context context, Hashtable dataTable){
-        String data =
-                "<player>" +
-                "<firstname>"+ dataTable.get("firstname") +"</firstname>" +
-                "<lastname>"+ dataTable.get("lastname") +"</lastname>" +
-                "<birthdate>"+ dataTable.get("birthday") +"</birthdate>" +
-                "<url_picture></url_picture>" +
-                "<height>"+ dataTable.get("height") +"</height>" +
-                "<weight>"+ dataTable.get("weight") +"</weight>" +
-                "<post>"+ dataTable.get("post") +"</post>" +
-                "<tee_num>"+ dataTable.get("teeNumber") +"</tee_num>" +
-                "<state>"+ dataTable.get("state") +"</state>" +
-                "</player>";
-
-
-        xmlHandler.writeXML(context, data, filename);
-    }
-
     public List<ElementList> generateList(Context context) throws IOException, XmlPullParserException {
         ArrayList<Player> players = null;
         try{
@@ -118,5 +94,5 @@ public class Player {
         }
 
         return elementLists;
-    }
+    }*/
 }

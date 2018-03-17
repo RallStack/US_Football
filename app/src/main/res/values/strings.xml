@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">US_Football</string>
+
+    <string name="post_prompt">Choose a country</string>
+
+    <string-array name="post_arrays">
+        <item name="QB">Quarterback</item>
+        <item name="RB">Running back</item>
+        <item name="WR">Wide receiver</item>
+        <item name="TE">Tight end</item>
+        <item name="C">Centre</item>
+        <item name="G">Offensive guard</item>
+        <item name="T">Offensive tackle</item>
+        <item name="DL">Defensive linemen</item>
+        <item name="LB">Linebacker</item>
+        <item name="DB">Defensive back</item>
+        <item name="S">Safety</item>
+        <item name="K">Kicker</item>
+        <item name="P">Punter</item>
+        <item name="KR">Kick returner</item>
+        <item name="PR">Punt returner</item>
+        <item name="LS">Long snapper</item>
+        <item name="G">Gunner</item>
+    </string-array>
 </resources>
