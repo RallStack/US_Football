@@ -38,10 +38,8 @@ public class ListAdapter extends ArrayAdapter<ElementList> {
             convertView.setTag(viewHolder);
         }
 
-        //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
         ElementList elementList = getItem(position);
 
-        //il ne reste plus qu'à remplir notre vue
         viewHolder.main_text.setText(elementList.getMainText());
         viewHolder.text.setText(elementList.getText());
         viewHolder.picture.setImageResource(R.drawable.none);

@@ -40,6 +40,8 @@
 
         <activity android:name=".NewStrategieSpecialActivity" />
 
+        <activity android:name=".EquipeListActivity" />
+
     </application>
 
 </manifest>

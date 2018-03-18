@@ -14,6 +14,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by mduchemin on 19/02/18.
@@ -27,14 +29,23 @@ public class XmlHandler {
      * @param context
      * @param filename
      */
-    public void CreateXmlFile(Context context, String filename){
+    public void CreateXmlFile(Context context, String filename, ArrayList<String> options){
         FileOutputStream os = null;
 
         if (!this.fileExists(context, filename)) {
             String xmlSkeleton =
                     "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>" +
-                    "<"+ filename.replace(".xml", "") +">" +
-                    "</"+ filename.replace(".xml", "") +">";
+                    "<"+ filename.replace(".xml", "") +">";
+
+            if (!options.isEmpty()){
+                for (String option: options) {
+                    xmlSkeleton +=
+                        "<"+option+">" +
+                        "</"+option+">";
+                }
+            }
+
+            xmlSkeleton += "</"+ filename.replace(".xml", "") +">";
 
             try {
                 os = context.openFileOutput(filename, context.MODE_PRIVATE);
@@ -79,14 +90,20 @@ public class XmlHandler {
      * @param data
      * @param filename
      */
-    public void writeXML(Context context, String data, String filename){
+    public void writeXML(Context context, String data, String filename, String replaceTag){
         FileInputStream is = null;
         FileOutputStream os = null;
 
         try {
             is = context.openFileInput(filename);
             String newData = convertStreamToString(is);
-            newData = newData.replace("</"+ filename.replace(".xml", "") +">", data+"</"+ filename.replace(".xml", "") +">");
+
+            if(replaceTag != ""){
+                //String regex = "<"+replaceTag+">.+<\\/"+replaceTag+">";
+                newData = newData.replaceAll("<"+replaceTag+">.*<\\/"+replaceTag+">", data);
+            }else{
+                newData = newData.replace("</"+ filename.replace(".xml", "") +">", data+"</"+ filename.replace(".xml", "") +">");
+            }
 
             os = context.openFileOutput(filename, context.MODE_PRIVATE);
             os.write(newData.getBytes());
