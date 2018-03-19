@@ -1,0 +1,107 @@
+package net.cs2i.us_football;
+
+import android.content.Context;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+
+/**
+ * Created by mduchemin on 19/02/18.
+ */
+
+public class Equipe {
+
+    private static final String filename = "equipes.xml";
+    String name, post;
+    String type;
+    XmlHandler xmlHandler;
+
+    public Equipe(){
+        xmlHandler = new XmlHandler();
+    }
+
+    public void createEquipeFile(Context context){
+        ArrayList<String> options = new ArrayList<String>();
+        options.add("equipe-attaque");
+        options.add("equipe-defense");
+        options.add("equipe-special");
+
+        xmlHandler.CreateXmlFile(context, filename, options);
+    }
+
+    private ArrayList getList(Context context) throws IOException, XmlPullParserException {
+        XmlPullParser pullParser = xmlHandler.readXML(context, filename);
+
+        ArrayList<Equipe> equipe = new ArrayList<>();
+        int eventType = pullParser.getEventType();
+        Equipe currentPlayer = null;
+
+        while (eventType != XmlPullParser.END_DOCUMENT){
+            String eltName = null;
+
+            switch(eventType){
+                case XmlPullParser.START_TAG:
+                    eltName = pullParser.getName();
+
+                    if ("player".equals(eltName)){
+                        currentPlayer = new Equipe();
+                        equipe.add(currentPlayer);
+                    } else if (currentPlayer != null){
+                        switch (eltName) {
+                            case "name":
+                                currentPlayer.name = pullParser.nextText();
+                                break;
+                            /*case "post":
+                                currentPlayer.post = pullParser.nextText();
+                                break;*/
+                        }
+                    }
+                    break;
+            }
+
+            eventType = pullParser.next();
+        }
+
+        return equipe;
+    }
+
+    public void addEquipeToXml(Context context, List<ElementList> players){
+        this.type = "attaque";
+
+        String data =
+                "<equipe-"+this.type+">";
+
+        for (ElementList player : players) {
+            data +=
+            "<player>" +
+            "<name>"+ player.getMainText() +"</name>" +
+            "</player>";
+        }
+
+        data += "</equipe-"+this.type+">";
+
+        xmlHandler.writeXML(context, data, filename, "equipe-"+this.type);
+    }
+
+    public List<ElementList> generateList(Context context) throws IOException, XmlPullParserException {
+        ArrayList<Equipe> equipes = null;
+        try{
+            equipes = this.getList(context);
+        } catch (IOException e){
+
+        }
+
+        List<ElementList> elementLists = new ArrayList<>();
+
+        for (Equipe equipe : equipes){
+            elementLists.add(new ElementList( equipe.name, ""));
+        }
+
+        return elementLists;
+    }
+}

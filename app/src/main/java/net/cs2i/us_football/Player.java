@@ -1,5 +1,6 @@
 package net.cs2i.us_football;
 
+import android.app.Activity;
 import android.content.Context;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -14,9 +15,9 @@ import java.util.List;
  * Created by mduchemin on 19/02/18.
  */
 
-public class Player {
+public class Player{
 
-    private static final String filename = "positions.xml";
+    private static final String filename = "players.xml";
     private String name, surname, birthdate, url_picture, height, weight, post, tee_num, state;
     XmlHandler xmlHandler;
 
@@ -25,10 +26,10 @@ public class Player {
     }
 
     public void createPlayerFile(Context context){
-        xmlHandler.CreateXmlFile(context, filename);
+        xmlHandler.CreateXmlFile(context, filename, new ArrayList<String>());
     }
 
-    private ArrayList getPLayers(Context context) throws IOException, XmlPullParserException {
+    public ArrayList getPLayers(Context context) throws IOException, XmlPullParserException {
         XmlPullParser pullParser = xmlHandler.readXML(context, filename);
 
         ArrayList<Player> players = new ArrayList<>();
@@ -100,7 +101,7 @@ public class Player {
                 "</player>";
 
 
-        xmlHandler.writeXML(context, data, filename);
+        xmlHandler.writeXML(context, data, filename, "");
     }
 
     public List<ElementList> generateList(Context context) throws IOException, XmlPullParserException {
@@ -114,9 +115,35 @@ public class Player {
         List<ElementList> elementLists = new ArrayList<>();
 
         for (Player player : players){
-            elementLists.add(new ElementList(player.url_picture, player.surname + " " + player.name, player.post));
+            elementLists.add(new ElementList(player.surname + " " + player.name, player.post));
         }
 
         return elementLists;
+    }
+
+
+
+    public String getName(){
+        return this.name;
+    }
+
+    public String getSurname(){
+        return this.surname;
+    }
+
+    public String getPost(){
+        return this.post;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setSurname(String surname){
+        this.surname = surname;
+    }
+
+    public void setPost(String post){
+        this.post = post;
     }
 }

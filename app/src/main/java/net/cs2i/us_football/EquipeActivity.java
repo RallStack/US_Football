@@ -1,49 +1,52 @@
 package net.cs2i.us_football;
 
 import android.app.Activity;
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v7.widget.CardView;
+import android.view.View;
 
 /**
  * Created by thomas on 19/02/2018.
  */
 
-public class EquipeActivity extends Activity {
+public class EquipeActivity extends Activity implements View.OnClickListener {
 
-    ListView teamListView;
+    CardView a, d, s;
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipes);
+        //Attaque
+        a=(CardView)this.findViewById(R.id.btn_goto_attaque);
+        a.setOnClickListener(this);
 
-        teamListView = (ListView) findViewById(R.id.team_list_view);
+        //Defense
+        d=(CardView)this.findViewById(R.id.btn_goto_defense);
+        d.setOnClickListener(this);
 
-        List<ElementList> elementLists = genererList();
-
-        ListAdapter adapter = new ListAdapter(EquipeActivity.this, elementLists);
-        teamListView.setAdapter(adapter);
+        //Spécial
+        s=(CardView)this.findViewById(R.id.btn_goto_special);
+        s.setOnClickListener(this);
     }
 
-    private List<ElementList> genererList(){
-        /*List<ElementList> tweets = new ArrayList<>();
-        tweets.add(new ElementList(Color.BLACK, "New England Patriots", ""));
-        tweets.add(new ElementList(Color.BLUE, "Buffalo Bills", ""));
-        tweets.add(new ElementList(Color.GREEN, "Miami Dolphins", ""));
-        tweets.add(new ElementList(Color.RED, "N.Y. Jets", ""));
-        tweets.add(new ElementList(Color.GRAY, "Pittsburgh Steelers", ""));
-        tweets.add(new ElementList(Color.CYAN, "Baltimore Ravens", ""));
-        tweets.add(new ElementList(Color.DKGRAY, "Cincinnati Bengals", ""));
-        tweets.add(new ElementList(Color.MAGENTA, "Cleveland Browns", ""));
-        tweets.add(new ElementList(Color.YELLOW, "Kansas City Chiefs", ""));
-        tweets.add(new ElementList(Color.BLACK, "Los Angeles Chargers", ""));
-        tweets.add(new ElementList(Color.GRAY, "Oakland Raiders", ""));
-        tweets.add(new ElementList(Color.BLUE, "Denver Broncos", ""));
-        return tweets;*/
-        return null;
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_goto_attaque:
+                Intent ba = new Intent(this, EquipeListActivity.class);
+                this.startActivity(ba);
+                break;
+
+            case R.id.btn_goto_defense:
+                Intent bd = new Intent(this, EquipeListActivity.class);
+                this.startActivity(bd);
+                break;
+
+            case R.id.btn_goto_special:
+                Intent bsp = new Intent(this, EquipeListActivity.class);
+                this.startActivity(bsp);
+                break;
+        }
     }
 }

@@ -87,6 +87,8 @@ public class JoueurEditionActivity extends Activity implements View.OnClickListe
 
         Player player = new Player();
         player.addPlayerToXml(JoueurEditionActivity.this, dataTable);
+
+        finish();
     }
 
     public void initializeInput(){

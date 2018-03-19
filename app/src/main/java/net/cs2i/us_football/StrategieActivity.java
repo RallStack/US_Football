@@ -6,14 +6,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 
 public class StrategieActivity extends Activity implements View.OnClickListener{
 
-    Button a;
-    Button d;
-    Button s;
+    CardView a, d, s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,15 +21,15 @@ public class StrategieActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_strategies);
 
         //Attaque
-        a=(Button)this.findViewById(R.id.btn_goto_attaque);
+        a=(CardView)this.findViewById(R.id.btn_goto_attaque);
         a.setOnClickListener(this);
 
         //Defense
-        d=(Button)this.findViewById(R.id.btn_goto_defense);
+        d=(CardView)this.findViewById(R.id.btn_goto_defense);
         d.setOnClickListener(this);
 
         //Spécial
-        s=(Button)this.findViewById(R.id.btn_goto_special);
+        s=(CardView)this.findViewById(R.id.btn_goto_special);
         s.setOnClickListener(this);
     }
 
