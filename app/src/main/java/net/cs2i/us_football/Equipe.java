@@ -19,7 +19,6 @@ public class Equipe {
 
     private static final String filename = "equipes.xml";
     String name, post;
-    String type;
     XmlHandler xmlHandler;
 
     public Equipe(){
@@ -83,7 +82,7 @@ public class Equipe {
 
     public void addEquipeToXml(Context context, List<ElementList> players, String type){
         String data =
-                "<equipe-"+this.type+">";
+                "<equipe-"+type+">";
 
         for (ElementList player : players) {
             data +=
@@ -92,9 +91,9 @@ public class Equipe {
             "</player>";
         }
 
-        data += "</equipe-"+this.type+">";
+        data += "</equipe-"+type+">";
 
-        xmlHandler.writeXML(context, data, filename, "equipe-"+this.type);
+        xmlHandler.writeXML(context, data, filename, "equipe-"+type);
     }
 
     public List<ElementList> generateList(Context context, String tag) throws IOException, XmlPullParserException {
