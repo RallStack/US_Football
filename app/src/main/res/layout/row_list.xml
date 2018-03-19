@@ -30,15 +30,15 @@
         android:layout_below="@+id/main_text"
         android:textColor="@android:color/black"
         tools:text="Secondary text" />
+    <!--
+        <Button
+            android:id="@+id/btn_goto_detail"
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:text="Détail" />
+    -->
 
-    <Button
-        android:id="@+id/btn_goto_detail"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:text="Détail" />
-
-
-</RelativeLayout>
+    </RelativeLayout>
 

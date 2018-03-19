@@ -24,7 +24,7 @@ public class NewStrategieDefenseActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation_strategies);
 
-        playerStratListView = (ListView) findViewById(R.id.player_strat_list_view);
+    //    playerStratListView = (ListView) findViewById(R.id.player_strat_list_view);
 
         List<ElementList> elementLists = null;
         /*try {
