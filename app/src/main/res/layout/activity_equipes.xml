@@ -11,7 +11,7 @@
     tools:showIn="@layout/activity_equipes">
 
     <RelativeLayout
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
@@ -31,14 +31,14 @@
         android:alignmentMode="alignMargins"
         android:columnOrderPreserved="false"
         android:layout_margin="100dp"
-        android:layout_weight="8"
+        android:layout_weight="9"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
         <android.support.v7.widget.CardView
             android:id="@+id/btn_goto_attaque"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_marginBottom="16dp"
@@ -75,8 +75,8 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/btn_goto_defense"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_marginBottom="16dp"
@@ -113,8 +113,8 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/btn_goto_special"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_marginBottom="16dp"

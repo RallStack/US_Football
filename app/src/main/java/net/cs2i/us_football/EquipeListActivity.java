@@ -31,6 +31,8 @@ public class EquipeListActivity extends Activity implements View.OnClickListener
     List<String> playerList;
     List<ElementList> elementLists;
 
+    String tag;
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -51,6 +53,10 @@ public class EquipeListActivity extends Activity implements View.OnClickListener
 
         validerEquipe=(Button)this.findViewById(R.id.btn_valider_equipe);
         validerEquipe.setOnClickListener(this);
+
+        Bundle b = getIntent().getExtras();
+        if(b != null)
+            this.tag = b.getString("tag");
 
         Equipe.createEquipeFile(this);
 
@@ -98,7 +104,7 @@ public class EquipeListActivity extends Activity implements View.OnClickListener
     }
 
     private void validateTeam(){
-        Equipe.addEquipeToXml(EquipeListActivity.this, elementLists);
+        Equipe.addEquipeToXml(EquipeListActivity.this, elementLists, this.tag);
 
         finish();
     }
@@ -107,7 +113,7 @@ public class EquipeListActivity extends Activity implements View.OnClickListener
         List<ElementList> elementLists = null;
 
         try {
-            elementLists = Equipe.generateList(this);
+            elementLists = Equipe.generateList(this, this.tag);
             ListAdapter adapter = new ListAdapter(this, elementLists);
             equipeList.setAdapter(adapter);
         }

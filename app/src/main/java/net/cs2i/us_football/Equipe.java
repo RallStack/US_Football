@@ -6,6 +6,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -34,12 +35,15 @@ public class Equipe {
         xmlHandler.CreateXmlFile(context, filename, options);
     }
 
-    private ArrayList getList(Context context) throws IOException, XmlPullParserException {
+    private ArrayList getList(Context context, String tag) throws IOException, XmlPullParserException {
         XmlPullParser pullParser = xmlHandler.readXML(context, filename);
 
         ArrayList<Equipe> equipe = new ArrayList<>();
+
         int eventType = pullParser.getEventType();
         Equipe currentPlayer = null;
+
+        boolean getPlayer = false;
 
         while (eventType != XmlPullParser.END_DOCUMENT){
             String eltName = null;
@@ -48,17 +52,24 @@ public class Equipe {
                 case XmlPullParser.START_TAG:
                     eltName = pullParser.getName();
 
-                    if ("player".equals(eltName)){
-                        currentPlayer = new Equipe();
-                        equipe.add(currentPlayer);
-                    } else if (currentPlayer != null){
-                        switch (eltName) {
-                            case "name":
-                                currentPlayer.name = pullParser.nextText();
-                                break;
-                            /*case "post":
-                                currentPlayer.post = pullParser.nextText();
-                                break;*/
+                    if (eltName.matches("equipe-.*")){
+                        if (("equipe-"+tag).equals(eltName)){
+                            getPlayer = true;
+                        } else{
+                            getPlayer = false;
+                        }
+                    }
+
+                    if (getPlayer){
+                        if ("player".equals(eltName)){
+                            currentPlayer = new Equipe();
+                            equipe.add(currentPlayer);
+                        } else if (currentPlayer != null){
+                            switch (eltName) {
+                                case "name":
+                                    currentPlayer.name = pullParser.nextText();
+                                    break;
+                            }
                         }
                     }
                     break;
@@ -70,9 +81,7 @@ public class Equipe {
         return equipe;
     }
 
-    public void addEquipeToXml(Context context, List<ElementList> players){
-        this.type = "attaque";
-
+    public void addEquipeToXml(Context context, List<ElementList> players, String type){
         String data =
                 "<equipe-"+this.type+">";
 
@@ -88,10 +97,10 @@ public class Equipe {
         xmlHandler.writeXML(context, data, filename, "equipe-"+this.type);
     }
 
-    public List<ElementList> generateList(Context context) throws IOException, XmlPullParserException {
+    public List<ElementList> generateList(Context context, String tag) throws IOException, XmlPullParserException {
         ArrayList<Equipe> equipes = null;
         try{
-            equipes = this.getList(context);
+            equipes = this.getList(context, tag);
         } catch (IOException e){
 
         }
