@@ -1,7 +1,9 @@
-package net.cs2i.us_football;
+package net.cs2i.us_football.Entity;
 
-import android.app.Activity;
 import android.content.Context;
+
+import net.cs2i.us_football.ElementList;
+import net.cs2i.us_football.Utils.XmlHandler;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;

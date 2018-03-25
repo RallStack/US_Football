@@ -2,15 +2,14 @@ package net.cs2i.us_football;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
+
+import net.cs2i.us_football.Entity.Player;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

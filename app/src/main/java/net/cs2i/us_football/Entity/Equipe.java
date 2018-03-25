@@ -1,14 +1,15 @@
-package net.cs2i.us_football;
+package net.cs2i.us_football.Entity;
 
 import android.content.Context;
+
+import net.cs2i.us_football.ElementList;
+import net.cs2i.us_football.Utils.XmlHandler;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
-import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 
 /**

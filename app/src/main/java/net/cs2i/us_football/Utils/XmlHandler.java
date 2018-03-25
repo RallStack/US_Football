@@ -1,4 +1,4 @@
-package net.cs2i.us_football;
+package net.cs2i.us_football.Utils;
 
 import android.content.Context;
 

@@ -1,7 +1,6 @@
 package net.cs2i.us_football;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -9,11 +8,14 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import net.cs2i.us_football.Entity.Equipe;
+import net.cs2i.us_football.Entity.Player;
+import net.cs2i.us_football.Utils.ListAdapter;
+
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 
 /**
@@ -26,8 +28,8 @@ public class EquipeListActivity extends Activity implements View.OnClickListener
     ListView equipeList;
     Spinner players;
 
-    Equipe Equipe;
-    Player Player;
+    net.cs2i.us_football.Entity.Equipe Equipe;
+    net.cs2i.us_football.Entity.Player Player;
     List<String> playerList;
     List<ElementList> elementLists;
 

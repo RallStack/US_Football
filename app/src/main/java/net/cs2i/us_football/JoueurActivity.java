@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import net.cs2i.us_football.Entity.Player;
+import net.cs2i.us_football.Utils.ListAdapter;
+
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
