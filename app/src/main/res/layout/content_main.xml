@@ -26,242 +26,258 @@
     </RelativeLayout>
 
     <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_weight="9"
         android:columnCount="2"
         android:rowCount="3"
+
         android:alignmentMode="alignMargins"
         android:columnOrderPreserved="false"
-        android:padding="42dp"
-        android:layout_weight="9"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/btn_goto_joueur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:cardElevation="8dp"
-        app:cardCornerRadius="8dp">
+        android:padding="42dp">
 
-        <LinearLayout
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_margin="16dp"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <android.support.v7.widget.CardView
+            android:id="@+id/btn_goto_joueur"
 
-            <ImageView
-                android:src="@drawable/footballplayer"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="170dp"
-                android:layout_height="170dp" />
+            android:layout_gravity="fill"
 
-            <TextView
-                android:text="Joueurs"
-                android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:textSize="42sp"
-                android:textStyle="bold"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-            android:id="@+id/btn_goto_equipe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="8dp">
+            android:layout_columnWeight="1"
+
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
 
             <LinearLayout
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="12dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:src="@drawable/americanfootball"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="170dp"
-                    android:layout_height="170dp" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/footballplayer" />
 
                 <TextView
-                    android:text="Equipes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
-                    android:textSize="42sp"
+                    android:textSize="32sp"
                     android:textStyle="bold"
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content" />
+                    android:text="Joueurs"/>
 
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/btn_goto_strategie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:cardElevation="8dp"
-        app:cardCornerRadius="8dp">
+        <android.support.v7.widget.CardView
+            android:id="@+id/btn_goto_equipe"
 
-        <LinearLayout
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_margin="16dp"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_gravity="fill"
 
-            <ImageView
-                android:src="@drawable/strategy"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="170dp"
-                android:layout_height="170dp" />
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
 
-            <TextView
-                android:text="Stratégies"
-                android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:textSize="42sp"
-                android:textStyle="bold"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content" />
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
 
-        </LinearLayout>
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
 
-    </android.support.v7.widget.CardView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="12dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/btn_goto_celebration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:cardElevation="8dp"
-        app:cardCornerRadius="8dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/americanfootball" />
 
-        <LinearLayout
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_margin="16dp"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Equipes"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
 
-            <ImageView
-                android:src="@drawable/celeb"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="170dp"
-                android:layout_height="170dp" />
+            </LinearLayout>
 
-            <TextView
-                android:text="Célébrations"
-                android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:textSize="42sp"
-                android:textStyle="bold"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content" />
+        </android.support.v7.widget.CardView>
 
-        </LinearLayout>
+        <android.support.v7.widget.CardView
+            android:id="@+id/btn_goto_strategie"
 
-    </android.support.v7.widget.CardView>
+            android:layout_gravity="fill"
 
-    <android.support.v7.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:cardElevation="8dp"
-        app:cardCornerRadius="8dp">
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
 
-        <LinearLayout
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_margin="16dp"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
 
-            <ImageView
-                android:src="@drawable/cup"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="170dp"
-                android:layout_height="170dp" />
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
 
-            <TextView
-                android:text="Tournois"
-                android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:textSize="42sp"
-                android:textStyle="bold"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="12dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/strategy" />
 
-    </android.support.v7.widget.CardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stratégies"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/btn_goto_tournoi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:cardElevation="8dp"
-        app:cardCornerRadius="8dp">
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_margin="16dp"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/btn_goto_celebration"
+
+            android:layout_gravity="fill"
+
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="12dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/celeb" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Célébrations"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/btn_goto_tournoi"
+
+            android:layout_gravity="fill"
+
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="12dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cup" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tournois"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/btn_quit"
+
+            android:layout_gravity="fill"
+
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="12dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
 
-            <ImageView
-                android:src="@drawable/quit"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="170dp"
-                android:layout_height="170dp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/quit" />
 
-            <TextView
-                android:text="Quitter"
-                android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:textSize="42sp"
-                android:textStyle="bold"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quitter"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
 
-        </LinearLayout>
+            </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+        </android.support.v7.widget.CardView>
 
     </GridLayout>
 
