@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import net.cs2i.us_football.Entity.ElementList;
 import net.cs2i.us_football.Entity.Equipe;
 import net.cs2i.us_football.Entity.Player;
 import net.cs2i.us_football.Utils.ListAdapter;
@@ -63,7 +64,7 @@ public class EquipeListActivity extends Activity implements View.OnClickListener
         Equipe.createEquipeFile(this);
 
         diplayEquipe();
-        showPlayer();
+        //showPlayer();
     }
 
     public void onClick(View v) {
@@ -77,7 +78,7 @@ public class EquipeListActivity extends Activity implements View.OnClickListener
         }
     }
 
-    private void showPlayer(){
+    /*private void showPlayer(){
         List<Player> players = null;
 
         try {
@@ -96,7 +97,7 @@ public class EquipeListActivity extends Activity implements View.OnClickListener
         }
         catch (XmlPullParserException e) { }
         catch (IOException e) { }
-    }
+    }*/
 
     private void addPlayer(){
         elementLists.add(new ElementList(players.getSelectedItem().toString(), ""));

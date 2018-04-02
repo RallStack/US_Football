@@ -2,7 +2,6 @@ package net.cs2i.us_football.Entity;
 
 import android.content.Context;
 
-import net.cs2i.us_football.ElementList;
 import net.cs2i.us_football.Utils.XmlHandler;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -21,131 +20,84 @@ public class Player{
 
     private static final String filename = "players.xml";
     private String name, surname, birthdate, url_picture, height, weight, post, tee_num, state;
-    XmlHandler xmlHandler;
+
+    /* ------------- Constructor ------------- */
 
     public Player(){
-        xmlHandler = new XmlHandler();
+
     }
 
-    public void createPlayerFile(Context context){
-        xmlHandler.CreateXmlFile(context, filename, new ArrayList<String>());
+    /* ------------- Getters and Setters ------------- */
+
+    public String getFirstName() {
+        return name;
     }
 
-    public ArrayList getPLayers(Context context) throws IOException, XmlPullParserException {
-        XmlPullParser pullParser = xmlHandler.readXML(context, filename);
-
-        ArrayList<Player> players = new ArrayList<>();
-        int eventType = pullParser.getEventType();
-        Player currentPlayer = null;
-
-        while (eventType != XmlPullParser.END_DOCUMENT){
-            String eltName = null;
-
-            switch(eventType){
-                case XmlPullParser.START_TAG:
-                    eltName = pullParser.getName();
-
-                    if ("player".equals(eltName)){
-                        currentPlayer = new Player();
-                        players.add(currentPlayer);
-                    } else if (currentPlayer != null){
-                        switch (eltName) {
-                            case "firstname":
-                                currentPlayer.name = pullParser.nextText();
-                                break;
-                            case "lastname":
-                                currentPlayer.surname = pullParser.nextText();
-                                break;
-                            case "birthdate":
-                                currentPlayer.birthdate = pullParser.nextText();
-                                break;
-                            case "url_picture":
-                                currentPlayer.url_picture = pullParser.nextText();
-                                break;
-                            case "height":
-                                currentPlayer.height = pullParser.nextText();
-                                break;
-                            case "weight":
-                                currentPlayer.weight = pullParser.nextText();
-                                break;
-                            case "post":
-                                currentPlayer.post = pullParser.nextText();
-                                break;
-                            case "tee_num":
-                                currentPlayer.tee_num = pullParser.nextText();
-                                break;
-                            case "state":
-                                currentPlayer.state = pullParser.nextText();
-                                break;
-                        }
-                    }
-                    break;
-            }
-
-            eventType = pullParser.next();
-        }
-
-        return players;
-    }
-
-    public void addPlayerToXml(Context context, Hashtable dataTable){
-        String data =
-                "<player>" +
-                "<firstname>"+ dataTable.get("firstname") +"</firstname>" +
-                "<lastname>"+ dataTable.get("lastname") +"</lastname>" +
-                "<birthdate>"+ dataTable.get("birthday") +"</birthdate>" +
-                "<url_picture></url_picture>" +
-                "<height>"+ dataTable.get("height") +"</height>" +
-                "<weight>"+ dataTable.get("weight") +"</weight>" +
-                "<post>"+ dataTable.get("post") +"</post>" +
-                "<tee_num>"+ dataTable.get("teeNumber") +"</tee_num>" +
-                "<state>"+ dataTable.get("state") +"</state>" +
-                "</player>";
-
-
-        xmlHandler.writeXML(context, data, filename, "");
-    }
-
-    public List<ElementList> generateList(Context context) throws IOException, XmlPullParserException {
-        ArrayList<Player> players = null;
-        try{
-            players = this.getPLayers(context);
-        } catch (IOException e){
-
-        }
-
-        List<ElementList> elementLists = new ArrayList<>();
-
-        for (Player player : players){
-            elementLists.add(new ElementList(player.surname + " " + player.name, player.post));
-        }
-
-        return elementLists;
-    }
-
-
-
-    public String getName(){
-        return this.name;
-    }
-
-    public String getSurname(){
-        return this.surname;
-    }
-
-    public String getPost(){
-        return this.post;
-    }
-
-    public void setName(String name){
+    public void setFirstName(String name) {
         this.name = name;
     }
 
-    public void setSurname(String surname){
+    public String getLastName() {
+        return surname;
+    }
+
+    public void setLastName(String surname) {
         this.surname = surname;
     }
 
-    public void setPost(String post){
+    public String getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public String getUrl_picture() {
+        return url_picture;
+    }
+
+    public void setUrl_picture(String url_picture) {
+        this.url_picture = url_picture;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public String getPost() {
+        return post;
+    }
+
+    public void setPost(String post) {
         this.post = post;
+    }
+
+    public String getTee_num() {
+        return tee_num;
+    }
+
+    public void setTee_num(String tee_num) {
+        this.tee_num = tee_num;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }

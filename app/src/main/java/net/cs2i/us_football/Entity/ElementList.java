@@ -1,4 +1,4 @@
-package net.cs2i.us_football;
+package net.cs2i.us_football.Entity;
 
 /**
  * Created by mduchemin on 19/02/18.

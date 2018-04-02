@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.widget.ListView;
 
+import net.cs2i.us_football.Entity.ElementList;
 import net.cs2i.us_football.Utils.ListAdapter;
 
 import java.util.List;

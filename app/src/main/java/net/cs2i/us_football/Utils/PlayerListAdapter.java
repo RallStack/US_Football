@@ -13,16 +13,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
-import net.cs2i.us_football.Entity.ItemPlayer;
+import net.cs2i.us_football.Entity.Player;
 import net.cs2i.us_football.R;
 
 import java.util.List;
 
 public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.MyViewHolder> {
     private Context context;
-    private List<ItemPlayer> cartList;
+    private List<Player> cartList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name, description, price;
@@ -40,7 +38,7 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.My
         }
     }
 
-    public PlayerListAdapter(Context context, List<ItemPlayer> cartList) {
+    public PlayerListAdapter(Context context, List<Player> cartList) {
         this.context = context;
         this.cartList = cartList;
     }
@@ -55,14 +53,14 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.My
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        final ItemPlayer item = cartList.get(position);
-        holder.name.setText(item.getName());
-        holder.description.setText(item.getDescription());
-        holder.price.setText("₹" + item.getPrice());
+        final Player item = cartList.get(position);
+        holder.name.setText(item.getFirstName() + ' ' + item.getLastName());
+        holder.description.setText(item.getPost());
+        holder.price.setText("N° " + item.getTee_num());
 
-        Glide.with(context)
+        /*Glide.with(context)
                 .load(item.getThumbnail())
-                .into(holder.thumbnail);
+                .into(holder.thumbnail);*/
     }
 
     @Override
@@ -72,13 +70,10 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.My
 
     public void removeItem(int position) {
         cartList.remove(position);
-        // notify the item removed by position
-        // to perform recycler view delete animations
-        // NOTE: don't call notifyDataSetChanged()
         notifyItemRemoved(position);
     }
 
-    public void restoreItem(ItemPlayer item, int position) {
+    public void restoreItem(Player item, int position) {
         cartList.add(position, item);
         // notify item added by position
         notifyItemInserted(position);

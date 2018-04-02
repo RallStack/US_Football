@@ -9,7 +9,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import net.cs2i.us_football.Entity.Player;
+import net.cs2i.us_football.Table.PlayerTable;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -38,12 +38,16 @@ public class JoueurEditionActivity extends Activity implements View.OnClickListe
 
     };
 
+    private PlayerTable Player;
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joueur_edition);
 
         initializeInput();
+
+        Player = new PlayerTable(this);
 
         btnAdd=(Button)this.findViewById(R.id.btn_add);
         btnAdd.setOnClickListener(this);
@@ -82,8 +86,7 @@ public class JoueurEditionActivity extends Activity implements View.OnClickListe
         dataTable.put("teeNumber", teeNumber.getText().toString());
         dataTable.put("state", state.getText().toString());
 
-        Player player = new Player();
-        player.addPlayerToXml(JoueurEditionActivity.this, dataTable);
+        Player.addPlayerToXml(JoueurEditionActivity.this, dataTable);
 
         finish();
     }

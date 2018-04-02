@@ -1,7 +1,6 @@
 package net.cs2i.us_football.Utils;
 
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import net.cs2i.us_football.ElementList;
+import net.cs2i.us_football.Entity.ElementList;
 import net.cs2i.us_football.R;
 
 import java.util.List;
