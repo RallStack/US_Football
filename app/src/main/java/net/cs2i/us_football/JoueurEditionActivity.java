@@ -84,7 +84,6 @@ public class JoueurEditionActivity extends Activity implements View.OnClickListe
         dataTable.put("weight", weight.getText().toString());
         dataTable.put("post", post.getSelectedItem().toString());
         dataTable.put("teeNumber", teeNumber.getText().toString());
-        dataTable.put("state", state.getText().toString());
 
         Player.addPlayerToXml(JoueurEditionActivity.this, dataTable);
 
@@ -99,6 +98,5 @@ public class JoueurEditionActivity extends Activity implements View.OnClickListe
         weight = (EditText)this.findViewById(R.id.add_player_weight);
         post = (Spinner) findViewById(R.id.add_player_post);
         teeNumber = (EditText)this.findViewById(R.id.add_player_tee);
-        state = (EditText)this.findViewById(R.id.add_player_state);
     }
 }

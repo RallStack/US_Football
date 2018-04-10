@@ -21,7 +21,7 @@ public class PlayerTable {
    private List<Player> players;
    private XmlHandler xmlHandler;
 
-   private static final String filename = "player.xml";
+   private static final String filename = "players.xml";
 
    /* ------------- Constructor ------------- */
 
@@ -43,16 +43,15 @@ public class PlayerTable {
         if (checkTeeNumber(dataTable.get("teeNumber").toString())){
             String data =
                     "<player>" +
-                            "<firstname>"+ dataTable.get("firstname") +"</firstname>" +
-                            "<lastname>"+ dataTable.get("lastname") +"</lastname>" +
-                            "<birthdate>"+ dataTable.get("birthday") +"</birthdate>" +
-                            "<url_picture></url_picture>" +
-                            "<height>"+ dataTable.get("height") +"</height>" +
-                            "<weight>"+ dataTable.get("weight") +"</weight>" +
-                            "<post>"+ dataTable.get("post") +"</post>" +
-                            "<tee_num>"+ dataTable.get("teeNumber") +"</tee_num>" +
-                            "<state>"+ dataTable.get("state") +"</state>" +
-                            "</player>";
+                        "<firstname>"+ dataTable.get("firstname") +"</firstname>" +
+                        "<lastname>"+ dataTable.get("lastname") +"</lastname>" +
+                        "<birthdate>"+ dataTable.get("birthday") +"</birthdate>" +
+                        "<url_picture></url_picture>" +
+                        "<height>"+ dataTable.get("height") +"</height>" +
+                        "<weight>"+ dataTable.get("weight") +"</weight>" +
+                        "<post>"+ dataTable.get("post") +"</post>" +
+                        "<tee_num>"+ dataTable.get("teeNumber") +"</tee_num>" +
+                    "</player>";
 
             xmlHandler.writeXML(context, data, filename, "");
         } else {
@@ -103,9 +102,6 @@ public class PlayerTable {
                                 currentPlayer.setPost(pullParser.nextText());
                                 break;
                             case "tee_num":
-                                currentPlayer.setTee_num(pullParser.nextText());
-                                break;
-                            case "state":
                                 currentPlayer.setTee_num(pullParser.nextText());
                                 break;
                         }

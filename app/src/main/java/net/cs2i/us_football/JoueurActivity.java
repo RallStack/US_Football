@@ -23,18 +23,12 @@ public class JoueurActivity extends AppCompatActivity implements RecyclerItemTou
     private List<Player> cartList;
     private PlayerListAdapter mAdapter;
 
-    // url to fetch menu json
-    private static final String URL = "https://api.androidhive.info/json/menu.json";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joueurs);
 
         recyclerView = findViewById(R.id.recycler_view);
-
-        PlayerTable Player = new PlayerTable(this);
-        cartList = Player.getPlayers();
 
         cartList = new ArrayList<>();
         mAdapter = new PlayerListAdapter(this, cartList);
@@ -47,6 +41,13 @@ public class JoueurActivity extends AppCompatActivity implements RecyclerItemTou
 
         ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
+
+        PlayerTable Player = new PlayerTable(this);
+
+        cartList.clear();
+        cartList.addAll(Player.getPlayers());
+
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -63,8 +64,6 @@ public class JoueurActivity extends AppCompatActivity implements RecyclerItemTou
         }
     }
 }
-
-
 
 /*public class JoueurActivity extends Activity implements View.OnClickListener{
 

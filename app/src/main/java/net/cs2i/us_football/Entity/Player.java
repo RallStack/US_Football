@@ -18,8 +18,7 @@ import java.util.List;
 
 public class Player{
 
-    private static final String filename = "players.xml";
-    private String name, surname, birthdate, url_picture, height, weight, post, tee_num, state;
+    private String name, surname, birthdate, url_picture, height, weight, post, tee_num;
 
     /* ------------- Constructor ------------- */
 
@@ -91,13 +90,5 @@ public class Player{
 
     public void setTee_num(String tee_num) {
         this.tee_num = tee_num;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
     }
 }
