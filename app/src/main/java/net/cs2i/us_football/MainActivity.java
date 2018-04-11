@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_goto_joueur :
-                //Intent bj = new Intent(this, JoueurActivity.class);
-                //this.startActivity(bj);
+                Intent bj = new Intent(this, JoueurActivity.class);
+                this.startActivity(bj);
                 break;
 
             case R.id.btn_goto_equipe :

@@ -13,14 +13,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import net.cs2i.us_football.Entity.Player;
+import net.cs2i.us_football.Utils.RecyclerAdapter;
 
 import java.util.ArrayList;
 
-/*public class MainActivity extends AppCompatActivity {
+public class JoueurActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerAdapter adapter;
-    private ArrayList<Friend> friendArrayList;
+    private ArrayList<Player> friendArrayList;
     private FloatingActionButton fab;
     private boolean gender;
 
@@ -46,14 +47,14 @@ import java.util.ArrayList;
     }
 
     private void setRecyclerViewData() {
-        friendArrayList.add(new Friend("Phan Thanh", false, "Cashier"));
-        friendArrayList.add(new Friend("Nguyen Tuan", true, "Developer"));
-        friendArrayList.add(new Friend("Tran Van Minh", true, "Designer"));
-        friendArrayList.add(new Friend("Pham Mai Anh", true, "architect"));
-        friendArrayList.add(new Friend("Nguyen Quynh Trang", false, "Doctor"));
-        friendArrayList.add(new Friend("Hoang Dinh Cuong", false, "artist"));
-        friendArrayList.add(new Friend("Tran Cong Bach", true, "Student"));
-        friendArrayList.add(new Friend("Vu Van Duong", false, "Teacher"));
+        friendArrayList.add(new Player("Phan Thanh", false, "Cashier"));
+        friendArrayList.add(new Player("Nguyen Tuan", true, "Developer"));
+        friendArrayList.add(new Player("Tran Van Minh", true, "Designer"));
+        friendArrayList.add(new Player("Pham Mai Anh", true, "architect"));
+        friendArrayList.add(new Player("Nguyen Quynh Trang", false, "Doctor"));
+        friendArrayList.add(new Player("Hoang Dinh Cuong", false, "artist"));
+        friendArrayList.add(new Player("Tran Cong Bach", true, "Student"));
+        friendArrayList.add(new Player("Vu Van Duong", false, "Teacher"));
     }
 
     private View.OnClickListener onAddingListener() {

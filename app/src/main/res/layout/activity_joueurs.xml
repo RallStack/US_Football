@@ -18,7 +18,7 @@
         android:layout_gravity="bottom|right"
         android:layout_marginBottom="10dp"
         android:layout_marginRight="10dp"
-        android:src="@mipmap/ic_plus"
+        android:src="@drawable/attaque"
         app:fabSize="normal" />
 
 </FrameLayout>
