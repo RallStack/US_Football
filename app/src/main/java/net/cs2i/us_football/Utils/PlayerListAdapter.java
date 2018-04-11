@@ -3,7 +3,7 @@ package net.cs2i.us_football.Utils;
 /**
  * Created by mduchemin on 25/03/18.
  */
-
+/*
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -61,7 +61,7 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.My
         /*Glide.with(context)
                 .load(item.getThumbnail())
                 .into(holder.thumbnail);*/
-    }
+ /*   }
 
     @Override
     public int getItemCount() {
@@ -78,4 +78,4 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.My
         // notify item added by position
         notifyItemInserted(position);
     }
-}
+}*/
