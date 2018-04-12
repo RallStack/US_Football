@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import net.cs2i.us_football.Entity.Player;
+import net.cs2i.us_football.Table.PlayerTable;
 import net.cs2i.us_football.Utils.RecyclerAdapter;
 
 import java.util.ArrayList;
@@ -23,12 +24,15 @@ public class JoueurActivity extends AppCompatActivity {
     private RecyclerAdapter adapter;
     private ArrayList<Player> playerList;
     private FloatingActionButton fab;
-    private boolean gender;
+    private PlayerTable PlayerTable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joueurs);
+
+        PlayerTable = new PlayerTable(this);
+
         playerList = new ArrayList<>();
 
         recyclerView = (RecyclerView) findViewById(R.id.recyle_view);
@@ -39,7 +43,10 @@ public class JoueurActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        setRecyclerViewData(); //adding data to array list
+        playerList.clear();
+        playerList.addAll(PlayerTable.getPlayers());
+
+        //setRecyclerViewData(); //adding data to array list
         adapter = new RecyclerAdapter(this, playerList);
         recyclerView.setAdapter(adapter);
 
@@ -83,7 +90,7 @@ public class JoueurActivity extends AppCompatActivity {
         };
     }
 
-    private AdapterView.OnItemSelectedListener onItemSelectedListener() {
+    /*private AdapterView.OnItemSelectedListener onItemSelectedListener() {
         return new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView parent, View view, int position, long id) {
@@ -99,7 +106,7 @@ public class JoueurActivity extends AppCompatActivity {
 
             }
         };
-    }
+    }*/
 
     private View.OnClickListener onConfirmListener(final EditText name, final EditText teeNumber, final Spinner post, final Dialog dialog) {
         return new View.OnClickListener() {
