@@ -21,15 +21,15 @@ public class JoueurActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerAdapter adapter;
-    private ArrayList<Player> friendArrayList;
+    private ArrayList<Player> playerList;
     private FloatingActionButton fab;
     private boolean gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        friendArrayList = new ArrayList<>();
+        setContentView(R.layout.activity_joueurs);
+        playerList = new ArrayList<>();
 
         recyclerView = (RecyclerView) findViewById(R.id.recyle_view);
         fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -40,50 +40,42 @@ public class JoueurActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         setRecyclerViewData(); //adding data to array list
-        adapter = new RecyclerAdapter(this, friendArrayList);
+        adapter = new RecyclerAdapter(this, playerList);
         recyclerView.setAdapter(adapter);
 
         fab.setOnClickListener(onAddingListener());
     }
 
     private void setRecyclerViewData() {
-        friendArrayList.add(new Player("Phan Thanh", false, "Cashier"));
-        friendArrayList.add(new Player("Nguyen Tuan", true, "Developer"));
-        friendArrayList.add(new Player("Tran Van Minh", true, "Designer"));
-        friendArrayList.add(new Player("Pham Mai Anh", true, "architect"));
-        friendArrayList.add(new Player("Nguyen Quynh Trang", false, "Doctor"));
-        friendArrayList.add(new Player("Hoang Dinh Cuong", false, "artist"));
-        friendArrayList.add(new Player("Tran Cong Bach", true, "Student"));
-        friendArrayList.add(new Player("Vu Van Duong", false, "Teacher"));
+        playerList.add(new Player("Phan Thanh", "01", "QB"));
+        playerList.add(new Player("Nguyen Tuan", "01", "QB"));
+        playerList.add(new Player("Tran Van Minh", "01", "QB"));
+        playerList.add(new Player("Pham Mai Anh", "01", "QB"));
+        playerList.add(new Player("Nguyen Quynh Trang", "01", "QB"));
+        playerList.add(new Player("Hoang Dinh Cuong", "01", "QB"));
+        playerList.add(new Player("Tran Cong Bach", "01", "QB"));
+        playerList.add(new Player("Vu Van Duong", "01", "QB"));
     }
 
     private View.OnClickListener onAddingListener() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Dialog dialog = new Dialog(MainActivity.this);
-                dialog.setContentView(R.layout.dialog_add); //layout for dialog
-                dialog.setTitle("Add a new friend");
+                final Dialog dialog = new Dialog(JoueurActivity.this);
+                dialog.setContentView(R.layout.dialog_add_player); //layout for dialog
+                dialog.setTitle("Add a new player");
                 dialog.setCancelable(false); //none-dismiss when touching outside Dialog
 
                 // set the custom dialog components - texts and image
                 EditText name = (EditText) dialog.findViewById(R.id.name);
-                EditText job = (EditText) dialog.findViewById(R.id.job);
-                Spinner spnGender = (Spinner) dialog.findViewById(R.id.gender);
+                Spinner post = (Spinner) dialog.findViewById(R.id.post);
+                EditText tee_num = (EditText) dialog.findViewById(R.id.tee_num);
                 View btnAdd = dialog.findViewById(R.id.btn_ok);
                 View btnCancel = dialog.findViewById(R.id.btn_cancel);
 
                 //set spinner adapter
-                ArrayList<String> gendersList = new ArrayList<>();
-                gendersList.add("Male");
-                gendersList.add("Female");
-                ArrayAdapter<String> spnAdapter = new ArrayAdapter<String>(MainActivity.this,
-                        android.R.layout.simple_dropdown_item_1line, gendersList);
-                spnGender.setAdapter(spnAdapter);
 
-                //set handling event for 2 buttons and spinner
-                spnGender.setOnItemSelectedListener(onItemSelectedListener());
-                btnAdd.setOnClickListener(onConfirmListener(name, job, dialog));
+                btnAdd.setOnClickListener(onConfirmListener(name, tee_num, post, dialog));
                 btnCancel.setOnClickListener(onCancelListener(dialog));
 
                 dialog.show();
@@ -109,14 +101,14 @@ public class JoueurActivity extends AppCompatActivity {
         };
     }
 
-    private View.OnClickListener onConfirmListener(final EditText name, final EditText job, final Dialog dialog) {
+    private View.OnClickListener onConfirmListener(final EditText name, final EditText teeNumber, final Spinner post, final Dialog dialog) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Player player = new Player(name.getText().toString().trim(), gender, job.getText().toString().trim());
+                Player player = new Player(name.getText().toString().trim(), teeNumber.getText().toString().trim(), post.getSelectedItem().toString().trim());
 
                 //adding new object to arraylist
-                friendArrayList.add(player);
+                playerList.add(player);
 
                 //notify data set changed in RecyclerView adapter
                 adapter.notifyDataSetChanged();

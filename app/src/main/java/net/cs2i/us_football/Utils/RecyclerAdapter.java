@@ -39,7 +39,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void onBindViewHolder(RecyclerAdapter.ViewHolder viewHolder, int position) {
 
         //setting data to view holder elements
-        viewHolder.name.setText(players.get(position).getFirstName() + " " + players.get(position).getLastName());
+        viewHolder.name.setText(players.get(position).getName());
         viewHolder.post.setText(players.get(position).getPost());
 
         //set on click listener for each element
@@ -47,7 +47,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     private void setDataToView(TextView name, TextView job, ImageView genderIcon, int position) {
-        name.setText(players.get(position).getFirstName() + " " + players.get(position).getLastName());
+        name.setText(players.get(position).getName());
         job.setText(players.get(position).getPost());
     }
 

@@ -80,11 +80,8 @@ public class PlayerTable {
                         players.add(currentPlayer);
                     } else if (currentPlayer != null){
                         switch (eltName) {
-                            case "firstname":
-                                currentPlayer.setFirstName(pullParser.nextText());
-                                break;
-                            case "lastname":
-                                currentPlayer.setLastName(pullParser.nextText());
+                            case "name":
+                                currentPlayer.setName(pullParser.nextText());
                                 break;
                             case "birthdate":
                                 currentPlayer.setBirthdate(pullParser.nextText());

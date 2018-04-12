@@ -18,7 +18,7 @@ import java.util.List;
 
 public class Player{
 
-    private String name, surname, birthdate, url_picture, height, weight, post, tee_num;
+    private String name, birthdate, url_picture, height, weight, post, tee_num;
 
     /* ------------- Constructor ------------- */
 
@@ -26,22 +26,21 @@ public class Player{
 
     }
 
+    public Player(String name, String tee_num, String post){
+        this.name = name;
+        this.tee_num = tee_num;
+        this.post = post;
+    }
+
     /* ------------- Getters and Setters ------------- */
 
-    public String getFirstName() {
+
+    public String getName() {
         return name;
     }
 
-    public void setFirstName(String name) {
+    public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLastName() {
-        return surname;
-    }
-
-    public void setLastName(String surname) {
-        this.surname = surname;
     }
 
     public String getBirthdate() {
