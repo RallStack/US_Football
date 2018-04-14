@@ -16,12 +16,13 @@
             android:id="@+id/image"
             android:layout_width="100dp"
             android:layout_height="80dp"
-            android:padding="5dp"
-            android:src="@mipmap/ic_launcher" />
+            android:padding="10dp"
+            android:src="@drawable/footballplayer" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/name"

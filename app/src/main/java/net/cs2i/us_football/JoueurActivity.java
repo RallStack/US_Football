@@ -17,6 +17,7 @@ import net.cs2i.us_football.Table.PlayerTable;
 import net.cs2i.us_football.Utils.RecyclerAdapter;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class JoueurActivity extends AppCompatActivity {
 
@@ -116,6 +117,16 @@ public class JoueurActivity extends AppCompatActivity {
 
                 //adding new object to arraylist
                 playerList.add(player);
+
+                Hashtable dataTable = new Hashtable();
+                dataTable.put("name", name.getText().toString());
+                //dataTable.put("birthday", birthday.getText().toString());
+                //dataTable.put("height", height.getText().toString());
+                //dataTable.put("weight", weight.getText().toString());
+                dataTable.put("post", post.getSelectedItem().toString());
+                dataTable.put("teeNumber", teeNumber.getText().toString());
+
+                PlayerTable.addPlayerToXml(JoueurActivity.this, dataTable);
 
                 //notify data set changed in RecyclerView adapter
                 adapter.notifyDataSetChanged();

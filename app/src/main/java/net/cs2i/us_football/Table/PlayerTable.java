@@ -43,10 +43,8 @@ public class PlayerTable {
         if (checkTeeNumber(dataTable.get("teeNumber").toString())){
             String data =
                     "<player>" +
-                        "<firstname>"+ dataTable.get("firstname") +"</firstname>" +
-                        "<lastname>"+ dataTable.get("lastname") +"</lastname>" +
+                        "<name>"+ dataTable.get("name") +"</name>" +
                         "<birthdate>"+ dataTable.get("birthday") +"</birthdate>" +
-                        "<url_picture></url_picture>" +
                         "<height>"+ dataTable.get("height") +"</height>" +
                         "<weight>"+ dataTable.get("weight") +"</weight>" +
                         "<post>"+ dataTable.get("post") +"</post>" +
@@ -85,9 +83,6 @@ public class PlayerTable {
                                 break;
                             case "birthdate":
                                 currentPlayer.setBirthdate(pullParser.nextText());
-                                break;
-                            case "url_picture":
-                                currentPlayer.setUrl_picture(pullParser.nextText());
                                 break;
                             case "height":
                                 currentPlayer.setHeight(pullParser.nextText());

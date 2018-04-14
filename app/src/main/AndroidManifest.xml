@@ -20,9 +20,8 @@
         <activity android:name=".JoueurActivity"
                   android:label="Joueurs"/>
 
-        <activity android:name=".JoueurEditionActivity" />
-
-        <activity android:name=".EquipeActivity" />
+        <activity android:name=".EquipeActivity"
+                  android:label="Equipe" />
 
         <activity android:name=".StrategieActivity" />
 
