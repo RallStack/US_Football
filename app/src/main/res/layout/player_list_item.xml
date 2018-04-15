@@ -49,6 +49,17 @@
                 android:textColor="@android:color/holo_green_dark"
                 android:textStyle="bold" />
 
+            <ImageButton
+                android:id="@+id/list_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="Delete"
+                android:background="@null"
+                android:src="@drawable/red_cross" />
+
         </RelativeLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>

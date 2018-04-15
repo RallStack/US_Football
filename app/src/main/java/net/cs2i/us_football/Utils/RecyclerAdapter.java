@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,7 +37,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(RecyclerAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(RecyclerAdapter.ViewHolder viewHolder, final int position) {
 
         //setting data to view holder elements
         viewHolder.name.setText(players.get(position).getName());
@@ -44,6 +45,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         //set on click listener for each element
         viewHolder.container.setOnClickListener(onClickListener(position));
+
+        viewHolder.del.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Player theRemovedItem = players.get(position);
+
+                players.remove(position);
+                notifyItemRemoved(position);
+            }
+        });
     }
 
     private void setDataToView(TextView name, TextView job, ImageView genderIcon, int position) {
@@ -84,7 +94,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         private ImageView imageView;
         private TextView name;
         private TextView post;
-        private TextView number;
+        private ImageButton del;
         private View container;
 
         public ViewHolder(View view) {
@@ -92,7 +102,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             imageView = (ImageView) view.findViewById(R.id.image);
             name = (TextView) view.findViewById(R.id.name);
             post = (TextView) view.findViewById(R.id.post);
-            number = (TextView) view.findViewById(R.id.number);
+            del = (ImageButton) view.findViewById(R.id.list_delete);
             container = view.findViewById(R.id.card_view);
         }
     }
