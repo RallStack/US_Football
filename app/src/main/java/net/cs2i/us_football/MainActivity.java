@@ -9,13 +9,13 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    CardView j, e, s, c, t;
+    CardView j, e, s, c, t, q;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.content_main);
 
         //Joueur
         j=(CardView)this.findViewById(R.id.btn_goto_joueur);
@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Joueur
         t=(CardView)this.findViewById(R.id.btn_goto_tournoi);
         t.setOnClickListener(this);
+
+        q=(CardView)this.findViewById(R.id.btn_quit);
+        q.setOnClickListener(this);
     }
 
     public void onClick(View v) {
@@ -55,15 +58,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 this.startActivity(bs);
                 break;
 
-            /*case R.id.btn_goto_celebration :
-                Intent bc = new Intent(this, CelebrationActivity.class);
-                this.startActivity(bc);
-                break;
-
-            case R.id.btn_goto_tournoi :
+            /*case R.id.btn_goto_tournoi :
                 Intent bt = new Intent(this, TournoiActivity.class);
                 this.startActivity(bt);
                 break;*/
+
+            case R.id.btn_quit :
+                finish();
+                break;
         }
     }
 }

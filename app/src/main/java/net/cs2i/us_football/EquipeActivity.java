@@ -13,6 +13,7 @@ import android.view.View;
 public class EquipeActivity extends Activity implements View.OnClickListener {
 
     CardView a, d, s;
+    Bundle b;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -34,17 +35,33 @@ public class EquipeActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_goto_attaque:
+
                 Intent ba = new Intent(this, EquipeListActivity.class);
+
+                b = new Bundle();
+                b.putString("tag", "attaque"); //Your id
+                ba.putExtras(b); //Put your id to your next Intent
+
                 this.startActivity(ba);
                 break;
 
             case R.id.btn_goto_defense:
                 Intent bd = new Intent(this, EquipeListActivity.class);
+
+                b = new Bundle();
+                b.putString("tag", "defense"); //Your id
+                bd.putExtras(b); //Put your id to your next Intent
+
                 this.startActivity(bd);
                 break;
 
             case R.id.btn_goto_special:
                 Intent bsp = new Intent(this, EquipeListActivity.class);
+
+                b = new Bundle();
+                b.putString("tag", "special"); //Your id
+                bsp.putExtras(b); //Put your id to your next Intent
+
                 this.startActivity(bsp);
                 break;
         }

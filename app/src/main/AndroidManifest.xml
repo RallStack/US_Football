@@ -5,14 +5,11 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".MainActivity"
+                  android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,28 +17,36 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".JoueurActivity" />
+        <activity android:name=".JoueurActivity"
+                  android:label="Joueurs"/>
 
-        <activity android:name=".JoueurEditionActivity" />
+        <activity android:name=".EquipeListActivity"
+                  android:theme="@style/AppTheme"
+                  android:label="Equipe"/>
 
-        <activity android:name=".EquipeActivity" />
+        <activity android:name=".EquipeActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".StrategieActivity" />
+        <activity android:name=".StrategieActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".AttaqueActivity" />
+        <activity android:name=".AttaqueActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".DefenseActivity" />
+        <activity android:name=".DefenseActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".SpecialActivity" />
+        <activity android:name=".SpecialActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".NewStrategieAttaqueActivity" />
+        <activity android:name=".NewStrategieAttaqueActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".NewStrategieDefenseActivity" />
+        <activity android:name=".NewStrategieDefenseActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".NewStrategieSpecialActivity" />
-
-        <activity android:name=".EquipeListActivity" />
+        <activity android:name=".NewStrategieSpecialActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
-
 </manifest>

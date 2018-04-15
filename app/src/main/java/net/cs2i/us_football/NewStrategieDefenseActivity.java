@@ -4,15 +4,13 @@ package net.cs2i.us_football;
  * Created by Xydhroz on 20/02/2018.
  */
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
 import android.widget.ListView;
 
-import org.xmlpull.v1.XmlPullParserException;
+import net.cs2i.us_football.Entity.ElementList;
+import net.cs2i.us_football.Utils.ListAdapter;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class NewStrategieDefenseActivity extends Activity{
