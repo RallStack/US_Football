@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_add_strategie"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#066225"
@@ -11,202 +12,46 @@
         android:id="@+id/nom_strategie"
         android:layout_width="380dp"
         android:layout_height="55dp"
+        android:layout_marginEnd="448dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Nom stratégie"
         app:layout_constraintEnd_toEndOf="parent"
-
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="16dp" />
 
     <!--  app:layout_constraintStart_toEndOf="@+id/relativeLayout" -->
 
 
-    <Button
-        android:id="@+id/btn_add_new_strat"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:text="Ajouter Stratégie"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-    <!--   app:layout_constraintStart_toEndOf="@+id/relativeLayout" />  -->
-
-    <!--
     <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="335dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-      <ListView
-            android:id="@+id/player_strat_list_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:background="@android:color/darker_gray"
-            tools:layout_editor_absoluteX="16dp" />
 
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/footballplayer"
-            tools:layout_editor_absoluteX="340dp"
-            tools:layout_editor_absoluteY="143dp" />
+        <net.cs2i.us_football.Utils.VueTerrainStrategie
+            android:id="@+id/vueTerrainStrategie"
+            android:layout_width="1100dp"
+            android:layout_height="500dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="55dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="569dp"
+            tools:layout_editor_absoluteY="102dp" />
+
 
     </RelativeLayout>
 
- -->
-
-    <RelativeLayout
-        android:id="@+id/view_root"
-        android:layout_width="1000dp"
-        android:layout_height="500dp"
-        android:layout_marginStart="172dp"
-        android:background="@drawable/linearborder"
+    <Button
+        android:id="@+id/btn_add_new_strat"
+        android:layout_width="1272dp"
+        android:layout_height="50dp"
+        android:text="Ajouter Stratégie"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.458">
-
-
-        <ImageView
-            android:id="@+id/joueur1"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="98dp"
-            android:src="@drawable/player"
-            tools:layout_editor_absoluteX="340dp"
-            tools:layout_editor_absoluteY="143dp" />
-
-        <ImageView
-            android:id="@+id/joueur2"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="98dp"
-            android:src="@drawable/player"
-            tools:layout_editor_absoluteX="440dp"
-            tools:layout_editor_absoluteY="143dp" />
-
-        <ImageView
-            android:id="@+id/joueur3"
-            android:layout_width="70dp"
-            android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="98dp"
-            android:src="@drawable/player"
-            tools:layout_editor_absoluteX="540dp"
-            tools:layout_editor_absoluteY="143dp" />
-
-        <ImageView
-            android:id="@+id/joueur4"
-            android:layout_width="70dp"
-            android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="98dp"
-            android:src="@drawable/player"
-            tools:layout_editor_absoluteX="540dp"
-            tools:layout_editor_absoluteY="143dp" />
-
-        <ImageView
-            android:id="@+id/joueur5"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="98dp"
-            android:src="@drawable/player"
-            tools:layout_editor_absoluteX="340dp"
-            tools:layout_editor_absoluteY="143dp" />
-
-        <ImageView
-            android:id="@+id/joueur6"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="98dp"
-            android:src="@drawable/player"
-            tools:layout_editor_absoluteX="440dp"
-            tools:layout_editor_absoluteY="143dp" />
-
-        <ImageView
-            android:id="@+id/joueur7"
-            android:layout_width="70dp"
-            android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="98dp"
-            android:src="@drawable/player"
-            tools:layout_editor_absoluteX="540dp"
-            tools:layout_editor_absoluteY="143dp" />
-
-        <ImageView
-            android:id="@+id/joueur8"
-            android:layout_width="70dp"
-            android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="98dp"
-            android:src="@drawable/player"
-            tools:layout_editor_absoluteX="540dp"
-            tools:layout_editor_absoluteY="143dp" />
-
-        <ImageView
-            android:id="@+id/joueur9"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="98dp"
-            android:src="@drawable/player"
-            tools:layout_editor_absoluteX="340dp"
-            tools:layout_editor_absoluteY="143dp" />
-
-        <ImageView
-            android:id="@+id/joueur10"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="98dp"
-            android:src="@drawable/player"
-            tools:layout_editor_absoluteX="440dp"
-            tools:layout_editor_absoluteY="143dp" />
-
-        <ImageView
-            android:id="@+id/joueur11"
-            android:layout_width="70dp"
-            android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="98dp"
-            android:src="@drawable/player"
-            tools:layout_editor_absoluteX="540dp"
-            tools:layout_editor_absoluteY="143dp" />
-
-    </RelativeLayout>
-
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
