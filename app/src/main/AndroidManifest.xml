@@ -44,10 +44,12 @@
                   android:screenOrientation="landscape"/>
 
         <activity android:name=".NewStrategieDefenseActivity"
-                  android:theme="@style/AppTheme.NoActionBar"/>
+                  android:theme="@style/AppTheme.NoActionBar"
+                  android:screenOrientation="landscape"/>
 
         <activity android:name=".NewStrategieSpecialActivity"
-                  android:theme="@style/AppTheme.NoActionBar"/>
+                  android:theme="@style/AppTheme.NoActionBar"
+                  android:screenOrientation="landscape"/>
 
     </application>
 </manifest>
