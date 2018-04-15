@@ -26,6 +26,10 @@ public class Player{
 
     }
 
+    public Player(String name){
+        this.name = name;
+    }
+
     public Player(String name, String tee_num, String post){
         this.name = name;
         this.tee_num = tee_num;

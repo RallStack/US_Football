@@ -1,33 +1,26 @@
 package net.cs2i.us_football;
 
-import android.app.Activity;
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import net.cs2i.us_football.Entity.ElementList;
-import net.cs2i.us_football.Entity.Equipe;
 import net.cs2i.us_football.Entity.Player;
+import net.cs2i.us_football.Table.EquipeTable;
 import net.cs2i.us_football.Table.PlayerTable;
-import net.cs2i.us_football.Utils.ListAdapter;
+import net.cs2i.us_football.Utils.RecyclerAdapter;
 
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Hashtable;
 import java.util.List;
 
 /**
@@ -36,44 +29,49 @@ import java.util.List;
 
 public class EquipeListActivity extends AppCompatActivity {
 
+    private RecyclerView recyclerView;
+    private RecyclerAdapter adapter;
+    private ArrayList<Player> playerList;
+    private FloatingActionButton fab;
+    private EquipeTable equipeTable;
+    private PlayerTable playerTable;
+
     ListView equipeList;
 
     net.cs2i.us_football.Entity.Equipe Equipe;
 
     String tag;
 
-    PlayerTable playerTable;
-
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipe_list);
 
+        Intent intent = getIntent();
+
+        String tag = intent.getStringExtra("tag");
+
+        equipeTable = new EquipeTable(this, tag);
         playerTable = new PlayerTable(this);
 
+        playerList = new ArrayList<>();
 
+        recyclerView = (RecyclerView) findViewById(R.id.recyle_view);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
 
-        /*
-        ajouterJoueur = findViewById(R.id.btn_valider_equipe);
-        validerEquipe = findViewById(R.id.btn_valider_equipe);
-        equipeList = findViewById(R.id.equipe_list_view);
-        players = findViewById(R.id.spinner_player);
+        recyclerView.setHasFixedSize(true);
 
-        ajouterJoueur=(Button)this.findViewById(R.id.btn_ajouter_joueur);
-        ajouterJoueur.setOnClickListener(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
-        validerEquipe=(Button)this.findViewById(R.id.btn_valider_equipe);
-        validerEquipe.setOnClickListener(this);
+        playerList.clear();
+        playerList.addAll(equipeTable.getEquipe());
 
-        Bundle b = getIntent().getExtras();
-        if(b != null)
-            this.tag = b.getString("tag");
+        //setRecyclerViewData(); //adding data to array list
+        adapter = new RecyclerAdapter(this, playerList);
+        recyclerView.setAdapter(adapter);
 
-        Equipe.createEquipeFile(this);
-
-        diplayEquipe();
-        showPlayer();
-        */
+        fab.setOnClickListener(onAddingListener());
     }
 
     @Override
@@ -114,7 +112,10 @@ public class EquipeListActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                playerList.add(new Player(spinner_player.getSelectedItem().toString().trim()));
 
+                adapter = new RecyclerAdapter(EquipeListActivity.this, playerList);
+                recyclerView.setAdapter(adapter);
 
                 dialog.dismiss();
             }
@@ -131,45 +132,26 @@ public class EquipeListActivity extends AppCompatActivity {
     }
 
     private void fillPlayerSpinner(Spinner sItems){
-        List<String> playerList = new ArrayList<>();
+        List<String> spinnerPlayerList = new ArrayList<>();
 
         for ( Player player : playerTable.getPlayers()) {
-            playerList.add(player.getName());
+            spinnerPlayerList.add(player.getName());
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, playerList);
+                this, android.R.layout.simple_spinner_item, spinnerPlayerList);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sItems.setAdapter(adapter);
     }
 
-    /*
-    private void addPlayer(){
-        elementLists.add(new ElementList(players.getSelectedItem().toString(), ""));
-
-        ListAdapter adapter = new ListAdapter(this, elementLists);
-        equipeList.setAdapter(adapter);
-    }
-    */
-
-/*
-    private void validateTeam(){
-        Equipe.addEquipeToXml(EquipeListActivity.this, elementLists, this.tag);
-
-        finish();
-    }
-*/
-
-    private void diplayEquipe(){
-        List<ElementList> elementLists = null;
-
-        try {
-            elementLists = Equipe.generateList(this, this.tag);
-            ListAdapter adapter = new ListAdapter(this, elementLists);
-            equipeList.setAdapter(adapter);
-        }
-        catch (XmlPullParserException e) { }
-        catch (IOException e) { }
+    private View.OnClickListener onAddingListener(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                equipeTable.addEquipeToXml(EquipeListActivity.this, playerList);
+                finish();
+            }
+        };
     }
 }
