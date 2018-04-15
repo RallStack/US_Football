@@ -428,7 +428,7 @@ public class VueTerrainStrategie extends View {
                 }
 
                 // image 10
-                if(move_joueur1) {
+                if(move_joueur10) {
                     xOri_joueur10 = event.getX() - deltaX_joueur10;
                     yOri_joueur10 = event.getY() - deltaY_joueur10;
                 }
