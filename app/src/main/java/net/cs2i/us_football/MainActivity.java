@@ -58,11 +58,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 this.startActivity(bs);
                 break;
 
-            case R.id.btn_goto_celebration :
-                Intent bc = new Intent(this, JoueurEditionActivity.class);
-                this.startActivity(bc);
-                break;
-
             /*case R.id.btn_goto_tournoi :
                 Intent bt = new Intent(this, TournoiActivity.class);
                 this.startActivity(bt);

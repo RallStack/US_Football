@@ -20,23 +20,33 @@
         <activity android:name=".JoueurActivity"
                   android:label="Joueurs"/>
 
+        <activity android:name=".EquipeListActivity"
+                  android:theme="@style/AppTheme"
+                  android:label="Equipe"/>
+
         <activity android:name=".EquipeActivity"
-                  android:label="Equipe" />
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".StrategieActivity" />
+        <activity android:name=".StrategieActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".AttaqueActivity" />
+        <activity android:name=".AttaqueActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".DefenseActivity" />
+        <activity android:name=".DefenseActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".SpecialActivity" />
+        <activity android:name=".SpecialActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".NewStrategieAttaqueActivity" />
+        <activity android:name=".NewStrategieAttaqueActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".NewStrategieDefenseActivity" />
+        <activity android:name=".NewStrategieDefenseActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".NewStrategieSpecialActivity" />
+        <activity android:name=".NewStrategieSpecialActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".EquipeListActivity" />
     </application>
 </manifest>

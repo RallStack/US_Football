@@ -1,51 +1,59 @@
 package net.cs2i.us_football;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
 import net.cs2i.us_football.Entity.ElementList;
 import net.cs2i.us_football.Entity.Equipe;
 import net.cs2i.us_football.Entity.Player;
+import net.cs2i.us_football.Table.PlayerTable;
 import net.cs2i.us_football.Utils.ListAdapter;
 
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Hashtable;
 import java.util.List;
 
 /**
  * Created by Maxime on 17/03/2018.
  */
 
-public class EquipeListActivity extends Activity implements View.OnClickListener {
+public class EquipeListActivity extends AppCompatActivity {
 
-    Button ajouterJoueur, validerEquipe;
     ListView equipeList;
-    Spinner players;
 
     net.cs2i.us_football.Entity.Equipe Equipe;
-    net.cs2i.us_football.Entity.Player Player;
-    List<String> playerList;
-    List<ElementList> elementLists;
 
     String tag;
+
+    PlayerTable playerTable;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipe_list);
 
-        playerList = new ArrayList<String>();
-        elementLists = new ArrayList<>();
-        Equipe = new Equipe();
-        Player = new Player();
+        playerTable = new PlayerTable(this);
 
+
+
+        /*
         ajouterJoueur = findViewById(R.id.btn_valider_equipe);
         validerEquipe = findViewById(R.id.btn_valider_equipe);
         equipeList = findViewById(R.id.equipe_list_view);
@@ -64,53 +72,94 @@ public class EquipeListActivity extends Activity implements View.OnClickListener
         Equipe.createEquipeFile(this);
 
         diplayEquipe();
-        //showPlayer();
+        showPlayer();
+        */
     }
 
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_ajouter_joueur:
-                addPlayer();
-                break;
-            case R.id.btn_valider_equipe:
-                validateTeam();
-                break;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_add_player:
+                final Dialog dialog = new Dialog(EquipeListActivity.this);
+                dialog.setContentView(R.layout.dialog_add_player_to_team); //layout for dialog
+                dialog.setTitle("Add a player to team");
+
+                Spinner spinner_player = (Spinner) dialog.findViewById(R.id.spinner_player);
+
+                View btnAdd = dialog.findViewById(R.id.btn_ok);
+                View btnCancel = dialog.findViewById(R.id.btn_cancel);
+
+                btnAdd.setOnClickListener(onConfirmListener(spinner_player, dialog));
+                btnCancel.setOnClickListener(onCancelListener(dialog));
+
+                fillPlayerSpinner(spinner_player);
+                dialog.show();
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
-    /*private void showPlayer(){
-        List<Player> players = null;
+    private View.OnClickListener onConfirmListener(final Spinner spinner_player, final Dialog dialog) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        try {
-            players = Player.getPLayers(this);
 
-            for ( Player player : players) {
-                this.playerList.add(player.getName() + " " + player.getSurname());
+                dialog.dismiss();
             }
+        };
+    }
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    this, android.R.layout.simple_spinner_item, playerList);
+    private View.OnClickListener onCancelListener(final Dialog dialog) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        };
+    }
 
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            Spinner sItems = (Spinner) findViewById(R.id.spinner_player);
-            sItems.setAdapter(adapter);
+    private void fillPlayerSpinner(Spinner sItems){
+        List<String> playerList = new ArrayList<>();
+
+        for ( Player player : playerTable.getPlayers()) {
+            playerList.add(player.getName());
         }
-        catch (XmlPullParserException e) { }
-        catch (IOException e) { }
-    }*/
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, playerList);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sItems.setAdapter(adapter);
+    }
+
+    /*
     private void addPlayer(){
         elementLists.add(new ElementList(players.getSelectedItem().toString(), ""));
 
         ListAdapter adapter = new ListAdapter(this, elementLists);
         equipeList.setAdapter(adapter);
     }
+    */
 
+/*
     private void validateTeam(){
         Equipe.addEquipeToXml(EquipeListActivity.this, elementLists, this.tag);
 
         finish();
     }
+*/
 
     private void diplayEquipe(){
         List<ElementList> elementLists = null;

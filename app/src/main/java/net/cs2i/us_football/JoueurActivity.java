@@ -1,5 +1,6 @@
 package net.cs2i.us_football;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,8 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -16,8 +16,11 @@ import net.cs2i.us_football.Entity.Player;
 import net.cs2i.us_football.Table.PlayerTable;
 import net.cs2i.us_football.Utils.RecyclerAdapter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Hashtable;
+import java.util.Locale;
 
 public class JoueurActivity extends AppCompatActivity {
 
@@ -26,6 +29,21 @@ public class JoueurActivity extends AppCompatActivity {
     private ArrayList<Player> playerList;
     private FloatingActionButton fab;
     private PlayerTable PlayerTable;
+
+    private Calendar myCalendar = Calendar.getInstance();
+    private DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            myCalendar.set(Calendar.YEAR, year);
+            myCalendar.set(Calendar.MONTH, monthOfYear);
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            updateLabel();
+        }
+
+    };
+
+    private EditText name, birthday, tee_num, height, weight;
+    private Spinner post;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,17 +72,6 @@ public class JoueurActivity extends AppCompatActivity {
         fab.setOnClickListener(onAddingListener());
     }
 
-    private void setRecyclerViewData() {
-        playerList.add(new Player("Phan Thanh", "01", "QB"));
-        playerList.add(new Player("Nguyen Tuan", "01", "QB"));
-        playerList.add(new Player("Tran Van Minh", "01", "QB"));
-        playerList.add(new Player("Pham Mai Anh", "01", "QB"));
-        playerList.add(new Player("Nguyen Quynh Trang", "01", "QB"));
-        playerList.add(new Player("Hoang Dinh Cuong", "01", "QB"));
-        playerList.add(new Player("Tran Cong Bach", "01", "QB"));
-        playerList.add(new Player("Vu Van Duong", "01", "QB"));
-    }
-
     private View.OnClickListener onAddingListener() {
         return new View.OnClickListener() {
             @Override
@@ -75,41 +82,32 @@ public class JoueurActivity extends AppCompatActivity {
                 dialog.setCancelable(false); //none-dismiss when touching outside Dialog
 
                 // set the custom dialog components - texts and image
-                EditText name = (EditText) dialog.findViewById(R.id.name);
-                Spinner post = (Spinner) dialog.findViewById(R.id.post);
-                EditText tee_num = (EditText) dialog.findViewById(R.id.tee_num);
+                name = (EditText) dialog.findViewById(R.id.name);
+                birthday = (EditText) dialog.findViewById(R.id.birthday);
+                post = (Spinner) dialog.findViewById(R.id.post);
+                tee_num = (EditText) dialog.findViewById(R.id.tee_num);
+                height = (EditText) dialog.findViewById(R.id.height);
+                weight = (EditText) dialog.findViewById(R.id.weight);
+
                 View btnAdd = dialog.findViewById(R.id.btn_ok);
                 View btnCancel = dialog.findViewById(R.id.btn_cancel);
 
-                //set spinner adapter
-
-                btnAdd.setOnClickListener(onConfirmListener(name, tee_num, post, dialog));
+                btnAdd.setOnClickListener(onConfirmListener(name, birthday, post, tee_num, height, weight, dialog));
                 btnCancel.setOnClickListener(onCancelListener(dialog));
+
+                birthday.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new DatePickerDialog(JoueurActivity.this,  date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                    }
+                });
 
                 dialog.show();
             }
         };
     }
 
-    /*private AdapterView.OnItemSelectedListener onItemSelectedListener() {
-        return new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView parent, View view, int position, long id) {
-                if (position == 0) {
-                    gender = true;
-                } else {
-                    gender = false;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView parent) {
-
-            }
-        };
-    }*/
-
-    private View.OnClickListener onConfirmListener(final EditText name, final EditText teeNumber, final Spinner post, final Dialog dialog) {
+    private View.OnClickListener onConfirmListener(final EditText name, final EditText birthday, final Spinner post, final EditText teeNumber, final EditText height, final EditText weight, final Dialog dialog) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,11 +118,11 @@ public class JoueurActivity extends AppCompatActivity {
 
                 Hashtable dataTable = new Hashtable();
                 dataTable.put("name", name.getText().toString());
-                //dataTable.put("birthday", birthday.getText().toString());
-                //dataTable.put("height", height.getText().toString());
-                //dataTable.put("weight", weight.getText().toString());
+                dataTable.put("birthday", birthday.getText().toString());
                 dataTable.put("post", post.getSelectedItem().toString());
                 dataTable.put("teeNumber", teeNumber.getText().toString());
+                dataTable.put("height", height.getText().toString());
+                dataTable.put("weight", weight.getText().toString());
 
                 PlayerTable.addPlayerToXml(JoueurActivity.this, dataTable);
 
@@ -145,116 +143,11 @@ public class JoueurActivity extends AppCompatActivity {
             }
         };
     }
-}
 
+    private void updateLabel() {
+        String myFormat = "dd/MM/yyyy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.FRANCE);
 
-/*
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
-
-import net.cs2i.us_football.Entity.Player;
-import net.cs2i.us_football.Table.PlayerTable;
-import net.cs2i.us_football.Utils.PlayerListAdapter;
-import net.cs2i.us_football.Utils.RecyclerItemTouchHelper;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class JoueurActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
-
-    private static final String TAG = MainActivity.class.getSimpleName();
-    private RecyclerView recyclerView;
-    private List<Player> cartList;
-    private PlayerListAdapter mAdapter;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_joueurs);
-
-        recyclerView = findViewById(R.id.recycler_view);
-
-        cartList = new ArrayList<>();
-        mAdapter = new PlayerListAdapter(this, cartList);
-
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        recyclerView.setAdapter(mAdapter);
-
-        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this);
-        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
-
-        PlayerTable Player = new PlayerTable(this);
-
-        cartList.clear();
-        cartList.addAll(Player.getPlayers());
-
-        mAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
-        if (viewHolder instanceof PlayerListAdapter.MyViewHolder) {
-            // get the removed item name to display it in snack bar
-            String name = cartList.get(viewHolder.getAdapterPosition()).getFirstName();
-
-            // backup of removed item for undo purpose
-            final Player deletedItem = cartList.get(viewHolder.getAdapterPosition());
-            final int deletedIndex = viewHolder.getAdapterPosition();
-
-            mAdapter.removeItem(viewHolder.getAdapterPosition());
-        }
+        birthday.setText(sdf.format(myCalendar.getTime()));
     }
 }
-*/
-
-/*public class JoueurActivity extends Activity implements View.OnClickListener{
-
-    Button j;
-    private ListView playerListView;
-    private Player player;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_joueurs);
-
-        j=(Button)this.findViewById(R.id.btn_ajouter_joueur);
-        j.setOnClickListener(this);
-
-        //playerListView = (ListView) findViewById(R.id.player_list_view);
-        player = new Player();
-
-        player.createPlayerFile(this);
-
-        diplayPlayer();
-    }
-
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_ajouter_joueur:
-                Intent bj = new Intent(this, JoueurEditionActivity.class);
-                this.startActivity(bj);
-                break;
-        }
-    }
-
-    private void diplayPlayer(){
-        List<ElementList> elementLists = null;
-
-        try {
-            elementLists = player.generateList(this);
-            ListAdapter adapter = new ListAdapter(this, elementLists);
-            playerListView.setAdapter(adapter);
-        }
-        catch (XmlPullParserException e) { }
-        catch (IOException e) { }
-    }
-}*/

@@ -55,7 +55,6 @@ public class PlayerTable {
         } else {
 
         }
-
     }
 
     /* ------------- Private function ------------- */
