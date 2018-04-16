@@ -108,7 +108,7 @@ public class XmlHandler {
             os = context.openFileOutput(filename, context.MODE_PRIVATE);
             os.write(newData.getBytes());
 
-            os.close();
+            //os.close();
         }
         catch (FileNotFoundException e) { }
         catch (IOException e) { }

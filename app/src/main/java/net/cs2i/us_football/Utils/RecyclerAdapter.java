@@ -43,9 +43,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         viewHolder.name.setText(players.get(position).getName());
         viewHolder.post.setText(players.get(position).getPost());
 
-        //set on click listener for each element
-        viewHolder.container.setOnClickListener(onClickListener(position));
-
         viewHolder.del.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Player theRemovedItem = players.get(position);

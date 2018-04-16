@@ -16,8 +16,6 @@ public class NewStrategieAttaqueActivity extends Activity{
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation_strategies);
-
-        playerStratListView = (ListView) findViewById(R.id.player_strat_list_view);
     }
 
 }
