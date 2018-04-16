@@ -40,8 +40,6 @@ public class EquipeListActivity extends AppCompatActivity {
 
     ListView equipeList;
 
-    net.cs2i.us_football.Entity.Equipe Equipe;
-
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -67,7 +65,6 @@ public class EquipeListActivity extends AppCompatActivity {
         playerList.clear();
         playerList.addAll(equipeTable.getEquipe());
 
-        //setRecyclerViewData(); //adding data to array list
         adapter = new RecyclerAdapter(this, playerList);
         recyclerView.setAdapter(adapter);
 

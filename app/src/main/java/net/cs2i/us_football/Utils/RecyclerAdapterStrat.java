@@ -10,8 +10,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import net.cs2i.us_football.Entity.Equipe;
-import net.cs2i.us_football.Entity.Player;
 import net.cs2i.us_football.Entity.Strategie;
 import net.cs2i.us_football.R;
 

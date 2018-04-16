@@ -34,15 +34,6 @@
         <activity android:name=".StrategieActivity"
                   android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".AttaqueActivity"
-                  android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".DefenseActivity"
-                  android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".SpecialActivity"
-                  android:theme="@style/AppTheme.NoActionBar"/>
-
         <activity android:name=".NewStrategieAttaqueActivity"
                   android:theme="@style/AppTheme.NoActionBar"
                   android:screenOrientation="landscape"/>

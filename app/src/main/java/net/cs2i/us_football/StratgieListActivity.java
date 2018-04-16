@@ -8,12 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import net.cs2i.us_football.Entity.Equipe;
 import net.cs2i.us_football.Entity.Strategie;
-import net.cs2i.us_football.Table.EquipeTable;
-import net.cs2i.us_football.Table.PlayerTable;
 import net.cs2i.us_football.Table.StrategieTable;
-import net.cs2i.us_football.Utils.RecyclerAdapter;
 import net.cs2i.us_football.Utils.RecyclerAdapterStrat;
 
 import java.util.ArrayList;
