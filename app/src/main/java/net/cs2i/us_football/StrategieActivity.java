@@ -13,6 +13,7 @@ import android.widget.Button;
 public class StrategieActivity extends Activity implements View.OnClickListener{
 
     CardView a, d, s;
+    Bundle b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +37,32 @@ public class StrategieActivity extends Activity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_goto_attaque:
-                Intent ba = new Intent(this, AttaqueActivity.class);
+                Intent ba = new Intent(this, StratgieListActivity.class);
+
+                b = new Bundle();
+                b.putString("tag", "attaque"); //Your id
+                ba.putExtras(b); //Put your id to your next Intent
+
                 this.startActivity(ba);
                 break;
 
             case R.id.btn_goto_defense:
-                Intent bd = new Intent(this, DefenseActivity.class);
+                Intent bd = new Intent(this, StratgieListActivity.class);
+
+                b = new Bundle();
+                b.putString("tag", "defense"); //Your id
+                bd.putExtras(b); //Put your id to your next Intent
+
                 this.startActivity(bd);
                 break;
 
             case R.id.btn_goto_special:
-                Intent bsp = new Intent(this, SpecialActivity.class);
+                Intent bsp = new Intent(this, StratgieListActivity.class);
+
+                b = new Bundle();
+                b.putString("tag", "special"); //Your id
+                bsp.putExtras(b); //Put your id to your next Intent
+
                 this.startActivity(bsp);
                 break;
         }

@@ -15,10 +15,7 @@ public class Strategie {
         xmlHandler = new XmlHandler();
     }
 
-
-
-        /* ------------- Getters and Setters ------------- */
-
+    /* ------------- Getters and Setters ------------- */
 
     public String getName() {
         return name;
@@ -26,5 +23,13 @@ public class Strategie {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

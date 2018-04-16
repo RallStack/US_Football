@@ -36,11 +36,11 @@ public class EquipeListActivity extends AppCompatActivity {
     private EquipeTable equipeTable;
     private PlayerTable playerTable;
 
+    String tag;
+
     ListView equipeList;
 
     net.cs2i.us_football.Entity.Equipe Equipe;
-
-    String tag;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -49,7 +49,7 @@ public class EquipeListActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String tag = intent.getStringExtra("tag");
+        tag = intent.getStringExtra("tag");
 
         equipeTable = new EquipeTable(this, tag);
         playerTable = new PlayerTable(this);

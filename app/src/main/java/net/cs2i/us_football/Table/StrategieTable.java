@@ -27,16 +27,16 @@ public class StrategieTable {
 
     /* ------------- Constructor ------------- */
 
-    public StrategieTable(Context context){
+    public StrategieTable(Context context, String tag){
         this.tag = tag;
 
         xmlHandler = new XmlHandler();
         strategies = new ArrayList<Strategie>();
 
         ArrayList<String> options = new ArrayList<String>();
-    //    options.add("equipe-attaque");
-    //    options.add("equipe-defense");
-    //    options.add("equipe-special");
+        options.add("strategie-attaque");
+        options.add("strategie-defense");
+        options.add("strategie-special");
 
         xmlHandler.CreateXmlFile(context, filename, options);
 
@@ -54,8 +54,9 @@ public class StrategieTable {
         for (Strategie strategie : newListStrategies) {
             data +=
                     "<strategie>" +
-                            "<name>"+ strategie.getName() +"</name>" +
-                            "</strategie>";
+                        "<name>"+ strategie.getName() +"</name>" +
+                        "<image>"+ strategie.getName() +"</image>" +
+                    "</strategie>";
         }
 
         data += "<strategie-offensive>";
@@ -97,6 +98,9 @@ public class StrategieTable {
                             switch (eltName) {
                                 case "name":
                                     currentStrategie.setName(pullParser.nextText());
+                                    break;
+                                case "image":
+                                    currentStrategie.setImage(pullParser.nextText());
                                     break;
                             }
                         }
