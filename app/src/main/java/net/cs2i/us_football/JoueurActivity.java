@@ -144,6 +144,12 @@ public class JoueurActivity extends AppCompatActivity {
         };
     }
 
+    @Override
+    public void onBackPressed() {
+        PlayerTable.updatePlayerList(this, playerList);
+        finish();
+    }
+
     private void updateLabel() {
         String myFormat = "dd/MM/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.FRANCE);

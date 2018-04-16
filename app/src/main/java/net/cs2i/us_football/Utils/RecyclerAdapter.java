@@ -1,7 +1,10 @@
 package net.cs2i.us_football.Utils;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Dialog;
+import android.content.ComponentName;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +48,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         viewHolder.del.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 Player theRemovedItem = players.get(position);
 
                 players.remove(position);

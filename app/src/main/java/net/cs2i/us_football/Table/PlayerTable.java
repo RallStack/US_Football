@@ -57,6 +57,26 @@ public class PlayerTable {
         }
     }
 
+    public void updatePlayerList(Context context, List<Player> newListPlayers){
+        String data = "<players>";
+
+        for (Player player : newListPlayers) {
+            data +=
+                    "<player>" +
+                            "<name>"+ player.getName() +"</name>" +
+                            "<birthdate>"+ player.getBirthdate() +"</birthdate>" +
+                            "<height>"+ player.getHeight() +"</height>" +
+                            "<weight>"+ player.getWeight() +"</weight>" +
+                            "<post>"+ player.getPost() +"</post>" +
+                            "<tee_num>"+ player.getTee_num() +"</tee_num>" +
+                    "</player>";
+        }
+
+        data += "</players>";
+
+        xmlHandler.writeXML(context, data, filename, "players");
+    }
+
     /* ------------- Private function ------------- */
 
     private void getAllPLayers(Context context) throws IOException, XmlPullParserException {
