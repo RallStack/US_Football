@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -19,11 +20,12 @@ import net.cs2i.us_football.R;
  */
 
 public class VueTerrainStrategie extends View {
+    private static android.graphics.Canvas mCanvas;
     Paint p = new Paint();
 
     Paint mPaint;
     Bitmap mBitmap;
-    Canvas mCanvas;
+  //  Canvas mCanvas;
     Path mPath;
     Paint mBitmapPaint;
     Context context;
@@ -475,4 +477,18 @@ public class VueTerrainStrategie extends View {
     }
 
 
+  //  public static void clear() {
+
+    //    mCanvas.drawColor(Color.rgb(6,98,37), PorterDuff.Mode.CLEAR);
+    //    Paint p = new Paint();
+    //    p.setColor(Color.WHITE);
+    //    p.setStyle(Paint.Style.FILL);
+
+    //    mCanvas.drawPaint(p);
+    //    Canvas canvas = surfaceView.getHolder().lockCanvas();
+
+     //   mCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+     //   surfaceView.getHolder().unlockCanvasAndPost(canvas);
+
+   // }
 }
